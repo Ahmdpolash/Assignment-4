@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import Container from "./Container";
 import { navbarList } from "@/constant";
+import logo from "@/assets/logo.png";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -20,9 +21,9 @@ const Navbar = () => {
         } w-screen h-screen backdrop-blur-sm top-0 left-0 z-10`}
       ></div>
       <Container>
-        <div className="flex justify-between items-center">
-          <div className="logo">
-            <h1>Logo</h1>
+        <div className="flex justify-between py-2 items-center">
+          <div className="logo ">
+            <img className="w-[100px] h-[70px] object-fit" src={logo} alt="" />
           </div>
 
           {/* Desktop menu */}
@@ -30,7 +31,7 @@ const Navbar = () => {
             <ul className="lg:flex lg:gap-4">
               {navbarList?.map((nav, i) => (
                 <li key={i}>
-                  <Link to={nav.link} className="lg:ml-4">
+                  <Link to={nav.link} className="lg:ml-4 text-white">
                     {nav.title}
                   </Link>
                 </li>
@@ -67,7 +68,7 @@ const Navbar = () => {
             <ul className="flex  flex-col p-5 gap-5 text-[18px]">
               {navbarList?.map((nav, i) => (
                 <li key={i}>
-                  <Link to={nav.link} className="lg:ml-4">
+                  <Link to={nav.link} className="lg:ml-4 text-white">
                     {nav.title}
                   </Link>
                 </li>
@@ -76,7 +77,9 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center">
-            <button className="hidden lg:block lg:ml-4">Login</button>
+            <button className="hidden lg:block lg:ml-4 text-white">
+              Login
+            </button>
 
             <svg
               xmlns="http://www.w3.org/2000/svg"
