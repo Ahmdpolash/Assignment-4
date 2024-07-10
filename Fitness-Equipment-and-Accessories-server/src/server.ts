@@ -1,6 +1,8 @@
 import app from "./app";
 import config from "./config";
 import mongoose from "mongoose";
+import NotFound from "./middleware/NotFound";
+import GlobalErrorHandler from "./middleware/GlobalErrorHandler";
 
 async function main() {
   try {
@@ -15,3 +17,6 @@ async function main() {
 }
 
 main();
+
+app.use(NotFound);
+app.use(GlobalErrorHandler);
