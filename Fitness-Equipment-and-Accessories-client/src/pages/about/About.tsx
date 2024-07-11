@@ -1,3 +1,4 @@
+import NewsLater from "@/components/About/NewsLater";
 import Testimonial from "@/components/About/Testimonial";
 import Container from "@/components/shared/Container";
 import { FaAngleRight } from "react-icons/fa";
@@ -60,8 +61,9 @@ const About = () => {
           </p>
         </div>
 
+        <Testimonial />
 
-        <Testimonial/>
+        <NewsLater/>
       </Container>
     </div>
   );
