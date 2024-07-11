@@ -16,11 +16,14 @@ app.use("/api/v1", productRouter);
 
 app.use("/api/v1", cartRouter);
 
-//not found middleware
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Fitness Equipment and Accessories Project");
 });
+
+
+app.use(GlobalErrorHandler);
+app.use(NotFound);
 
 
 export default app;
