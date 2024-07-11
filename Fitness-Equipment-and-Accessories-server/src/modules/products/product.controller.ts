@@ -20,7 +20,9 @@ const createProduct: RequestHandler = catchAsync(async (req, res) => {
 
 const getAllProudcts: RequestHandler = catchAsync(async (req, res) => {
   // const { category, name } = req.query;
+  // const { category, name } = req.query;
 
+  // const query: any = {};
   // const query: any = {};
 
   // if (category) {
@@ -29,7 +31,14 @@ const getAllProudcts: RequestHandler = catchAsync(async (req, res) => {
   // if (name) {
   //   query.name = { $regex: name, $options: "i" };
   // }
+  // if (category) {
+  //   query.category = category;
+  // }
+  // if (name) {
+  //   query.name = { $regex: name, $options: "i" };
+  // }
 
+  // console.log(query);
   // console.log(query);
 
   const result = await productServices.getProductsFromDb(req.query);
