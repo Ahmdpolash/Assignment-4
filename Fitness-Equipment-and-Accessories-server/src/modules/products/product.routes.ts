@@ -8,5 +8,4 @@ productRouter.get("/products", productControllers.getAllProudcts);
 productRouter.get("/products/:id", productControllers.getSingleProduct);
 
 
-
 export default productRouter;
