@@ -7,7 +7,7 @@ import { navbarList } from "@/constant";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  
+
   const toggleMenu = () => {
     setOpen(!open);
   };
@@ -44,7 +44,7 @@ const Navbar = () => {
           <div
             className={`${
               open ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
-            } lg:hidden transition-all duration-500 border z-50 border-gray-200 shadow-lg backdrop-blur-sm transform h-screen fixed w-[350px] bg-white text-black top-0 left-0`}
+            } lg:hidden transition-all duration-500 border-r z-50 border-gray-300/50 shadow-lg backdrop-blur-sm transform h-screen fixed w-[350px] bg-[#0c1117] text-black top-0 left-0`}
           >
             <button
               className="px-4 py-2 text-3xl font-semibold flex absolute right-0 mt-2"

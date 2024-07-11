@@ -108,3 +108,41 @@ export const gallery = [
       "https://images.unsplash.com/photo-1592632789004-57d4354f2499?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
+
+export const data = [
+  {
+    _id: "1",
+    name: "Adjustable Dumbbells",
+    price: 150,
+    discount: 10,
+    quantity: 5,
+  },
+  {
+    _id: "2",
+    name: "Yoga Mat",
+    price: 30,
+    discount: 5,
+    quuantity: 5,
+  },
+  {
+    _id: "3",
+    name: "Treadmill",
+    price: 800,
+    discount: 15,
+    quuantity: 5,
+  },
+  {
+    _id: "4",
+    name: "Resistance Bands Set",
+    price: 20,
+    discount: 2,
+    quuantity: 5,
+  },
+  {
+    _id: "5",
+    name: "Exercise Bike",
+    price: 250,
+    discount: 20,
+    quuantity: 5,
+  },
+];
