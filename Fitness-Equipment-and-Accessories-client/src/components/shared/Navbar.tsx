@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { IoMdMenu } from "react-icons/io";
+import { RxCross1 } from "react-icons/rx";
 import Container from "./Container";
 import { navbarList } from "@/constant";
-import logo from "@/assets/logo.png";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-
+  
   const toggleMenu = () => {
     setOpen(!open);
   };
@@ -21,14 +21,15 @@ const Navbar = () => {
         } w-screen h-screen backdrop-blur-sm top-0 left-0 z-10`}
       ></div>
       <Container>
-        <div className="flex justify-between py-2 items-center">
+        <div className="flex justify-between py-2 items-center border- shadow-sm">
           <div className="logo ">
-            <img className="w-[100px] h-[70px] object-fit" src={logo} alt="" />
+            {/* <img className="w-[100px] h-[70px] object-fit" src={logo} alt="" /> */}
+            <h1 className="text-xl text-white">logo</h1>
           </div>
 
           {/* Desktop menu */}
-          <div className="hidden lg:block">
-            <ul className="lg:flex lg:gap-4">
+          <div className="hidden lg:block ">
+            <ul className="lg:flex lg:gap-4 ">
               {navbarList?.map((nav, i) => (
                 <li key={i}>
                   <Link to={nav.link} className="lg:ml-4 text-white">
@@ -49,20 +50,7 @@ const Navbar = () => {
               className="px-4 py-2 text-3xl font-semibold flex absolute right-0 mt-2"
               onClick={() => setOpen(false)}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18 18 6M6 6l12 12"
-                />
-              </svg>
+              <RxCross1 />
             </button>
 
             <ul className="flex  flex-col p-5 gap-5 text-[18px]">
@@ -81,21 +69,10 @@ const Navbar = () => {
               Login
             </button>
 
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-7 text-2xl cursor-pointer lg:hidden ml-4"
+            <IoMdMenu
+              className="text-[26px] cursor-pointer text-white lg:hidden ml-4"
               onClick={toggleMenu}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
+            />
           </div>
         </div>
       </Container>

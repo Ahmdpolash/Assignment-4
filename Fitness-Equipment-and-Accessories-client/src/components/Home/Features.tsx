@@ -13,7 +13,7 @@ const Features = () => {
       <section className=" mx-auto px-6">
         <div className="pb-16 pt-10">
           <div className="md:text-7xl text-5xl flex justify-between">
-            <h2 className="text-whit feature">Features</h2>{" "}
+            <h2 className="text-whit feature">Why Choose Us</h2>{" "}
             <img
               className=" md:w-20 md:h-auto h-10 -rotate-90"
               src={arrow}
