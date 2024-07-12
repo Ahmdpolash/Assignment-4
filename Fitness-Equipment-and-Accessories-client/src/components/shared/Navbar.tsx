@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { IoMdMenu } from "react-icons/io";
 import { RxCross1 } from "react-icons/rx";
 import Container from "./Container";
 import { navbarList } from "@/constant";
-
+import { BsCart2 } from "react-icons/bs";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
@@ -65,9 +65,12 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center">
-            <button className="hidden lg:block lg:ml-4 text-white">
-              Login
-            </button>
+            <Link to={'/carts'} className="relative cursor-pointer">
+              <BsCart2 className=" text-4xl font-semibold text-white" />
+              <div className="size-5  text-center text-sm font-bold bg-sky-100 top-0 right-0 rounded-full absolute text-sky-600">
+                3
+              </div>
+            </Link>
 
             <IoMdMenu
               className="text-[26px] cursor-pointer text-white lg:hidden ml-4"
