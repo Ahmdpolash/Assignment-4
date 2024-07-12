@@ -4,11 +4,29 @@ import { Link } from "react-router-dom";
 
 import { TbCurrencyDollar } from "react-icons/tb";
 import Ratings from "../Ratings/Ratings";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { addCart } from "@/redux/features/addToCartSlice";
+import { TProducts } from "@/types";
 
 const ProductCard = ({ data }: any) => {
+  console.log(data);
+  const dispatch = useAppDispatch();
+  const {carts}= useAppSelector(state=>state.carts)
+  console.log(carts,'cartsss')
+
+
+  const handleAddToCart = (product: TProducts) => {
+    dispatch(
+      addCart({
+        _id: product._id,
+        name: product.name,
+        image: product.image,
+      })
+    );
+  };
   return (
     <>
-      {data?.map((product: any, i: any) => (
+      {data?.map((product: TProducts, i: number) => (
         <div key={i}>
           <div className="card lg:h-[350px]   cursor-pointer group shadow-lg rounded-md border border-teal-300/3 border-slate-50/30 p-2 lg:px-3  lg:py-3">
             <div className="relative overflow-hidden">
@@ -63,7 +81,10 @@ const ProductCard = ({ data }: any) => {
                 </div>
               </div>
 
-              <div className="bg-[#e7e7e8] lg:flex hidden mx-auto justify-center text-center gap-2  border border-slate-300 py-[5px]  hover:border hover:duration-500 hover:border-teal-500 rounded-full px-2 lg:px-4 text-[13px] font-semibold">
+              <div
+                onClick={() => handleAddToCart(product)}
+                className="bg-[#e7e7e8] lg:flex hidden mx-auto justify-center text-center gap-2  border border-slate-300 py-[5px]  hover:border hover:duration-500 hover:border-teal-500 rounded-full px-2 lg:px-4 text-[13px] font-semibold"
+              >
                 Add To Cart
               </div>
             </div>

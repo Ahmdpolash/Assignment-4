@@ -4,11 +4,10 @@ import { FaAngleRight } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
 // import banner from '../../../public/banner/card.jpg'
-import toast from "react-hot-toast";
 import Container from "@/components/shared/Container";
 import { data } from "@/constant";
 const Cart = () => {
-  const [products, setProducts] = useState(data);
+  // const [products, setProducts] = useState(data);
 
   //get total price of cart items
   //   const subTotal = products?.reduce(
@@ -36,44 +35,6 @@ const Cart = () => {
 
   //cart quantity increment
 
-  const handleIncrease = (productId: any) => {
-    const productIndex = products.findIndex(
-      (product) => product._id === productId
-    );
-
-    if (productIndex !== -1) {
-      const updatedProducts = [...products];
-      if (
-        updatedProducts[productIndex].stock <=
-        updatedProducts[productIndex].quantity
-      ) {
-        return toast.error("Product limit exceeded");
-      }
-      updatedProducts[productIndex].quantity++;
-
-      setProducts(updatedProducts);
-    }
-  };
-
-  //cart quantity decrease
-
-  const handleDecrease = (productId: any) => {
-    const productIndex = products.findIndex(
-      (product) => product._id === productId
-    );
-
-    if (productIndex !== -1) {
-      const updatedProducts = [...products];
-
-      if (updatedProducts[productIndex].quantity < 2) {
-        return toast.error("Product Quantity Must be greater than 0");
-      }
-
-      updatedProducts[productIndex].quantity--;
-      setProducts(updatedProducts);
-    }
-  };
-
   // cart item deletion
 
   //scroll to to of page
@@ -83,18 +44,18 @@ const Cart = () => {
   }, []);
 
   //redirect to checkout page :
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const redirectCheckout = () => {
-    navigate("/checkout", {
-      state: {
-        products: products,
-        price: 500,
-        shipping_fee: 70,
-        items: products.length,
-      },
-    });
-  };
+  // const redirectCheckout = () => {
+  //   navigate("/checkout", {
+  //     state: {
+  //       products: products,
+  //       price: 500,
+  //       shipping_fee: 70,
+  //       // items: products.length,
+  //     },
+  //   });
+  // };
 
   return (
     <div>
@@ -128,7 +89,7 @@ const Cart = () => {
                     </h2>
                   </div>
 
-                  {products?.map((item, idx) => (
+                  {data?.map((item, idx) => (
                     <div key={idx} className="w-full ">
                       <div className="flex flex-wrap  gap-2 border-b border-slate-300 py-1 mb-2 justify-between items-center">
                         <div className="flex gap-2 flex-wrap items-center">
@@ -170,21 +131,11 @@ const Cart = () => {
 
                         <div className="flex gap-2 flex-col">
                           <div className="flex bg-slate-200 h-[30px] justify-center items-center text-xl">
-                            <div
-                              onClick={() => handleDecrease(item._id)}
-                              className="px-3 cursor-pointer"
-                            >
-                              -
-                            </div>
+                            <div className="px-3 cursor-pointer">-</div>
 
                             <div className="px-3">0</div>
 
-                            <div
-                              onClick={() => handleIncrease(item._id)}
-                              className="px-3 cursor-pointer"
-                            >
-                              +
-                            </div>
+                            <div className="px-3 cursor-pointer">+</div>
                           </div>
                           <button className="px-5 py-[3px] bg-[#F85606] text-white">
                             Delete
@@ -254,7 +205,7 @@ const Cart = () => {
                   </p>
                 </div>
                 <button
-                  onClick={redirectCheckout}
+                  // onClick={redirectCheckout}
                   className="py-2 lg:py-3 w-full text-[15px] text-white font-semibold cursor-pointer uppercase bg-[#F85606] mt-4 rounded-md "
                 >
                   Proceed to Checkout{" "}
