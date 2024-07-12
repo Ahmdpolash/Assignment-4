@@ -5,7 +5,8 @@ type TAddtoCart = {
   _id: string;
   name: string;
   image: string;
-  quantity?: number;
+  price: number;
+  quantity: number;
 };
 
 type TInitialState = {
@@ -25,8 +26,8 @@ const addToCartSlice = createSlice({
         (item) => item._id == action.payload._id
       );
       if (!isExist) {
-        state.carts.push({ ...action.payload, quantity: 0 });
-        toast.success("add to cart successfully")
+        state.carts.push({ ...action.payload });
+        toast.success("add to cart successfully");
       } else {
         toast.error("already added to cart");
       }

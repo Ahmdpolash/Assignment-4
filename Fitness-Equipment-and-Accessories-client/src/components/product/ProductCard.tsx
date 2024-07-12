@@ -20,6 +20,8 @@ const ProductCard = ({ data }: any) => {
         _id: product._id,
         name: product.name,
         image: product.image,
+        price: product.price,
+        quantity: product.stock
       })
     );
   };

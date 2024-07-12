@@ -17,6 +17,7 @@ const SingleProduct = () => {
   const dispatch = useAppDispatch();
 
   const { carts } = useAppSelector((state) => state.carts);
+  console.log(carts)
 
   const handleAddToCart = (product: TProducts) => {
     dispatch(
