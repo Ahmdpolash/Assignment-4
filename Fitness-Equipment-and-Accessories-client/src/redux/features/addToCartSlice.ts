@@ -1,36 +1,41 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const TInitialType = { name: "", image: "", _id: "", category: "" };
-
-type TCart = {
+type TAddtoCart = {
+  _id: string;
   name: string;
   image: string;
-  _id: string;
-  category: string;
+  quantity?: number;
 };
 
 type TInitialState = {
-  carts: TCart[];
+  carts: TAddtoCart[];
 };
-const initialState: TCart = {
+
+const initialState: TInitialState = {
   carts: [],
 };
 
-export const addToCartSlice = createSlice({
-  name: "addCart",
+const addToCartSlice = createSlice({
+  name: "addToCart",
   initialState,
   reducers: {
-    addToCart: (state: TState[], action) => {
-      const selectedProduct = action.payload;
-      state.push(selectedProduct);
-
-      //   state.name = selectedProduct.name;
-      //   state.image = selectedProduct.image;
-      //   state._id = selectedProduct._id;
-      //   state.category = selectedProduct.category;
+    addCart: (state, action: PayloadAction<TAddtoCart>) => {
+      state.carts.push({ ...action.payload, quantity: 0 });
+    },
+    removeItem: (state, action) => {
+      state.carts = state.carts.filter(
+        (item) => item._id !== action.payload._id
+      );
+    },
+    clearCart: (state) => {
+      state.carts = [];
+    },
+    loadCart: (state, action) => {
+      state.carts = action.payload;
     },
   },
 });
 
-export const { addToCart } = addToCartSlice.actions;
+export const { addCart,removeItem,clearCart,loadCart } = addToCartSlice.actions;
+
 export default addToCartSlice.reducer;

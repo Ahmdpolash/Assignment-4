@@ -1,6 +1,8 @@
 import Ratings from "@/components/Ratings/Ratings";
 import Container from "@/components/shared/Container";
+import { FaHeart } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa6";
+import { IoCartOutline } from "react-icons/io5";
 
 const SingleProduct = () => {
   return (
@@ -45,6 +47,29 @@ const SingleProduct = () => {
               >
                 Add to Cart
               </a>
+            </div>
+
+            <div className="py-3 l:py-4 flex gap-3 items-center">
+              <div className="flex cursor-pointer bg-[#E0E8EF] w-32 rounded-md">
+                <p className="w-full py-1 lg:py-2 text-2xl text-center border">
+                  {" "}
+                  -
+                </p>
+                <p className="border w-full text-center text-xl font-semibold py-1 lg:py-2">
+                  5
+                </p>
+                <p className="text-center py-1 lg:py-2 text-xl w-full border">
+                  +
+                </p>
+              </div>
+
+              <button className="bg-violet-500 flex cursor-pointer  gap-1 items-center py-2 lg:py-3 text-white px-6 rounded-sm">
+                Add to Cart <IoCartOutline className="text-[22px]" />
+              </button>
+
+              <div className="py-3 lg:py-4  px-3 lg:px-4 flex justify-center items-center cursor-pointer hover:shadow-lg hover:shadow-cyan-500/40 bg-cyan-500 text-white">
+                <FaHeart />
+              </div>
             </div>
           </div>
         </div>
