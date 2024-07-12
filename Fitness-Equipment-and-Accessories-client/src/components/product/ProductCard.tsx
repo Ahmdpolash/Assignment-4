@@ -14,7 +14,7 @@ const ProductCard = ({ data }: any) => {
             <div className="relative overflow-hidden">
               <img
                 className="mx-auto md:h-[170px] lg:h-[210px] md:w-full w-full  rounded-md transition-opacity hover:duration-700 ease-in-out"
-                src=" https://shop.lifefitness.com/cdn/shop/files/integrity-recumebnt-deluxe-titanium-s3HD-1000x1000.jpg?v=1712673345&width=800"
+                src={product?.image}
                 alt="Product image"
               />
 
@@ -41,7 +41,7 @@ const ProductCard = ({ data }: any) => {
               <Link to={`/`}>
                 {" "}
                 <h3 className="font-medium text-slate-300 my-1 mt-1 hover:text-teal-500 duration-500">
-                  Lorem ipsum dolor sit amet.
+                  {product.name}
                 </h3>
               </Link>
               <div className="flex justify-between items-center">
@@ -49,7 +49,7 @@ const ProductCard = ({ data }: any) => {
                   <div className="flex items-center text-white">
                     <TbCurrencyDollar className="text-[20px]" />
                     <p className="font-semibold   pb-2 transition-all duration-500 lg:mt-2">
-                      500
+                      {product.price}
                     </p>
                   </div>
 

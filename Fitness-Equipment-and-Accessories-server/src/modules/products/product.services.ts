@@ -1,5 +1,5 @@
 import QueryBuilder from "../../builder/QueryBuilder";
-import QueryBuilder from "../../builder/QueryBuilder";
+
 import { TProducts } from "./product.interface";
 import { Product } from "./product.model";
 

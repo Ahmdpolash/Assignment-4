@@ -116,7 +116,7 @@ const Cart = () => {
         </div>
       </section>
 
-      <section className="bg-[#eeeeee]">
+      <section className="bg-[#24292e]">
         <Container>
           <div className="grid grid-cols-1 py-4 lg:grid-cols-4 gap- lg:gap-4">
             <div className="col-span-3 bgw w-full ">
@@ -132,21 +132,13 @@ const Cart = () => {
                     <div key={idx} className="w-full ">
                       <div className="flex flex-wrap  gap-2 border-b border-slate-300 py-1 mb-2 justify-between items-center">
                         <div className="flex gap-2 flex-wrap items-center">
-                          <input
-                            type="checkbox"
-                            className="h-4 w-4 cursor-pointer"
-                            name=""
-                            id=""
-                          />
                           <img
                             className="w-[70px] h-[70px] rounded-md"
-                            src={""}
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfpgyqIf48U-ke2PDQCSaGqEkaYGhekglI5g&s"
                             alt="product image"
                           />
-                          <div className="pr-4 text-slate-600">
-                            <h2 className="text-md">
-                              {/* {item?.product_name.slice(0, 36)}.. */} dd
-                            </h2>
+                          <div className="pr-4 text-white">
+                            <h2 className="text-xl">aldfjasdjfasjkl</h2>
                             <span className="hidden lg:block text-sm">
                               {/* Brand: {item?.brand ? item?.brand : "No Brand"} */}
                             </span>

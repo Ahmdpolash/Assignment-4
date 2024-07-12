@@ -4,8 +4,12 @@ import { TbCurrencyDollar } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { AiFillHeart, AiOutlineShoppingCart } from "react-icons/ai";
 import Ratings from "../Ratings/Ratings";
+import { useGetProductsQuery } from "@/redux/api/api";
 
 const BestSelling = () => {
+  const { data: apiResponse } = useGetProductsQuery([]);
+  const products = apiResponse?.data || [];
+
   return (
     <div className="lg:px-5">
       <Container>
@@ -27,12 +31,15 @@ const BestSelling = () => {
         </div>
 
         <section className="grid grid-cols-2 lg:grid-cols-5 gap-4">
-          <div>
-            <div className="card lg:h-[350px]   cursor-pointer group shadow-lg rounded-md border border-teal-300/3 border-slate-50/10 p-2 lg:px-3  lg:py-3">
+          {products.slice(0, 10).map((product: any, idx: number) => (
+            <div
+              key={idx}
+              className="card lg:h-[350px]   cursor-pointer group shadow-lg rounded-md border border-teal-300/3 border-slate-50/10 p-2 lg:px-3  lg:py-3"
+            >
               <div className="relative overflow-hidden">
                 <img
                   className="mx-auto md:h-[170px] lg:h-[210px] md:w-full w-full  rounded-md transition-opacity hover:duration-700 ease-in-out"
-                  src=" https://shop.lifefitness.com/cdn/shop/files/integrity-recumebnt-deluxe-titanium-s3HD-1000x1000.jpg?v=1712673345&width=800"
+                  src={product.image}
                   alt="Product image"
                 />
 
@@ -59,7 +66,7 @@ const BestSelling = () => {
                 <Link to={`/`}>
                   {" "}
                   <h3 className="font-medium text-slate-300 my-1 mt-1 hover:text-teal-500 duration-500">
-                    Lorem ipsum dolor sit amet.
+                    {product.name}
                   </h3>
                 </Link>
                 <div className="flex justify-between items-center">
@@ -67,7 +74,7 @@ const BestSelling = () => {
                     <div className="flex items-center text-white">
                       <TbCurrencyDollar className="text-[20px]" />
                       <p className="font-semibold   pb-2 transition-all duration-500 lg:mt-2">
-                        500
+                        {product.price}
                       </p>
                     </div>
 
@@ -86,7 +93,7 @@ const BestSelling = () => {
                 </div>
               </div>
             </div>
-          </div>
+          ))}
         </section>
       </Container>
     </div>

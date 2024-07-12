@@ -1,4 +1,5 @@
 import App from "@/App";
+import Dashboard from "@/components/Dashboard/Dashboard";
 import About from "@/pages/about/About";
 import Cart from "@/pages/Cart/Cart";
 import Home from "@/pages/Home/Home";
@@ -38,5 +39,9 @@ export const router = createBrowserRouter([
   {
     path: "/sign-up",
     element: <Register />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
 ]);

@@ -50,7 +50,7 @@ const Navbar = () => {
               className="px-4 py-2 text-3xl font-semibold flex absolute right-0 mt-2"
               onClick={() => setOpen(false)}
             >
-              <RxCross1 />
+              <RxCross1 className="text-white" />
             </button>
 
             <ul className="flex  flex-col p-5 gap-5 text-[18px]">

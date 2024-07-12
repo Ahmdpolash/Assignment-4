@@ -31,7 +31,7 @@ const Products = () => {
   const { data: apiResponse } = useGetProductsQuery([]);
   const products = apiResponse?.data || [];
 
-  console.log(products);
+
 
   return (
     <div className="px-">
