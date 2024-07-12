@@ -23,6 +23,8 @@ const ProductCard = ({ data }: any) => {
       })
     );
   };
+
+  
   return (
     <>
       {data?.map((product: TProducts, i: number) => (

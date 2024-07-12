@@ -12,3 +12,9 @@ export type TProducts = {
   stock: number;
   category: string;
 };
+
+export type TProductResponse = {
+  success: boolean;
+  message: string;
+  data: TProducts[];
+};

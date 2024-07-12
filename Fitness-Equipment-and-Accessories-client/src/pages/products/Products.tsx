@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-// import "./shop.css";
 
 import { FaListUl } from "react-icons/fa6";
 

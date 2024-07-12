@@ -33,6 +33,8 @@ export const router = createBrowserRouter([
       {
         path: "/products/:id",
         element: <SingleProduct />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/v1/products/${params.id}`),
       },
       {
         path: "/carts",
