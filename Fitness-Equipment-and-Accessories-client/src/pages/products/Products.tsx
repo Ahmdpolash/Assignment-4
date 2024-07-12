@@ -12,6 +12,9 @@ import ProductCard from "@/components/product/ProductCard";
 import Header from "@/components/product/Header";
 import MobileSidebar from "@/components/product/MobileSidebar";
 
+import { categories } from "@/constant/index";
+import { TCategory } from "@/types";
+
 const Products = () => {
   const [isOpen, setOpen] = useState(false);
   const [styles, setStyles] = useState("grid");
@@ -30,8 +33,9 @@ const Products = () => {
 
   const { data: apiResponse } = useGetProductsQuery([]);
   const products = apiResponse?.data || [];
+  const [category, setCategory] = useState<string>();
 
-
+  console.log(category);
 
   return (
     <div className="px-">
@@ -53,34 +57,28 @@ const Products = () => {
               </h2>
             </div>
 
-            <div className="py-3 space-y-2 pl-1">
-              {/* {data?.map((cate, idx) => (
+            <div className="py-3 space-y-2 cursor-pointer pl-1">
+              {categories?.map((cate: TCategory, idx: number) => (
                 <div key={idx} className="flex  items-center gap-2">
                   <div>
-                    <label className="container">
-                      <input
-                        onChange={() =>
-                          setCategory(
-                            category === cate.category ? null : cate.category
-                          )
-                        }
-                        checked={category === cate.category}
-                        value={cate?.category}
-                        type="checkbox"
-                      />
-                      <svg className="w-4 h-4" viewBox="0 0 64 64">
-                        <path
-                          d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-                          pathLength="575.0541381835938"
-                          className="path"
-                        ></path>
-                      </svg>
-                    </label>
+                    <input
+                      onChange={(e) => setCategory(e.target.value)}
+                      className="h-3 w-3"
+                      value={cate.name}
+                      type="checkbox"
+                      name="category"
+                      id="category"
+                    />
                   </div>
 
-                  <h3 className="text-gray-700 text-[17px]">{cate.category}</h3>
+                  <h3
+                    id="category"
+                    className="text-white text-[17px] font-medium"
+                  >
+                    {cate.name}
+                  </h3>
                 </div>
-              ))} */}
+              ))}
             </div>
 
             <button className="px-5 my-3 w-full text-black py-2 text-center rounded bg-white border-gray-400">

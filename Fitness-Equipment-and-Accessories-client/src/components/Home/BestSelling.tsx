@@ -49,7 +49,7 @@ const BestSelling = () => {
                     <AiFillHeart className="text-[20px]" />
                   </li>
                   <Link
-                    to={"/ "}
+                    to={`/products/${product._id}`}
                     className="w-[38px] shadow-md border h-[38px] cursor-pointer bg-white flex justify-center items-center rounded-full hover:bg-red-500 hover:text-white hover:rotate-[360deg] transition-all"
                   >
                     <FaEye className="text-[18px]" />
@@ -63,7 +63,7 @@ const BestSelling = () => {
               </div>
 
               <div className="">
-                <Link to={`/`}>
+                <Link to={`/products/${product._id}`}>
                   {" "}
                   <h3 className="font-medium text-slate-300 my-1 mt-1 hover:text-teal-500 duration-500">
                     {product.name}
