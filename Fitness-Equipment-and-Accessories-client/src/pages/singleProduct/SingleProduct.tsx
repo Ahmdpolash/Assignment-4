@@ -1,7 +1,10 @@
 import Ratings from "@/components/Ratings/Ratings";
 import Container from "@/components/shared/Container";
-import { TProductResponse } from "@/types";
+import { addCart } from "@/redux/features/addToCartSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { TProductResponse, TProducts } from "@/types";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { FaHeart } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa6";
 import { IoCartOutline } from "react-icons/io5";
@@ -9,17 +12,31 @@ import { useLoaderData } from "react-router-dom";
 
 const SingleProduct = () => {
   const data = useLoaderData() as TProductResponse;
-
-  const { name, category, description, stock, price, image } = data.data;
   const [quantity, setQuantity] = useState(1);
 
-  let available = 6;
+  const dispatch = useAppDispatch();
+
+  const { carts } = useAppSelector((state) => state.carts);
+
+  const handleAddToCart = (product: TProducts) => {
+    dispatch(
+      addCart({
+        _id: product._id,
+        name: product.name,
+        image: product.image,
+      })
+    );
+  };
+
+  const { name, category, description, stock, price, image } = data.data;
+
+  let available = stock;
 
   const handleIncrement = () => {
     if (quantity < available) {
       setQuantity(quantity + 1);
     } else {
-      alert("Stock limit exceeded");
+      toast.error("Product limit exceeded");
     }
   };
 
@@ -78,7 +95,10 @@ const SingleProduct = () => {
                 </p>
               </div>
 
-              <button className="bg-[#3C956B] flex cursor-pointer  gap-1 items-center py-2 lg:py-3 text-white px-6 rounded-sm">
+              <button
+                onClick={() => handleAddToCart(data.data)}
+                className="bg-[#3C956B] flex cursor-pointer  gap-1 items-center py-2 lg:py-3 text-white px-6 rounded-sm"
+              >
                 Add to Cart <IoCartOutline className="text-[22px]" />
               </button>
 
