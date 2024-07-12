@@ -1,5 +1,7 @@
 import App from "@/App";
 import Dashboard from "@/components/Dashboard/Dashboard";
+import DashboardHome from "@/components/Dashboard/DashboardHome";
+import Order from "@/components/Dashboard/Order";
 import About from "@/pages/about/About";
 import Cart from "@/pages/Cart/Cart";
 import Home from "@/pages/Home/Home";
@@ -43,5 +45,15 @@ export const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />,
+    children: [
+      {
+        path: "my-dashboard",
+        element: <DashboardHome />,
+      },
+      {
+        path: "my-orders",
+        element: <Order />,
+      },
+    ],
   },
 ]);

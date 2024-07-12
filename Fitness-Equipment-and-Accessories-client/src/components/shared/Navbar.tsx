@@ -13,7 +13,7 @@ const Navbar = () => {
   };
 
   return (
-    <div>
+    <div className="border-b border-[#535861]">
       <div
         onClick={() => setOpen(false)}
         className={`fixed duration-200 ${
@@ -21,7 +21,7 @@ const Navbar = () => {
         } w-screen h-screen backdrop-blur-sm top-0 left-0 z-10`}
       ></div>
       <Container>
-        <div className="flex justify-between py-2 items-center border- shadow-sm">
+        <div className="flex justify-between py-2 items-center  shadow-sm">
           <div className="logo ">
             {/* <img className="w-[100px] h-[70px] object-fit" src={logo} alt="" /> */}
             <h1 className="text-xl text-white">logo</h1>
