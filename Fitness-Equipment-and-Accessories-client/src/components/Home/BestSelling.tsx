@@ -5,10 +5,29 @@ import { Link } from "react-router-dom";
 import { AiFillHeart, AiOutlineShoppingCart } from "react-icons/ai";
 import Ratings from "../Ratings/Ratings";
 import { useGetProductsQuery } from "@/redux/api/api";
+import { useAppDispatch } from "@/redux/hook";
+import { TProducts } from "@/types";
+import { addCart } from "@/redux/features/addToCartSlice";
 
 const BestSelling = () => {
   const { data: apiResponse } = useGetProductsQuery([]);
   const products = apiResponse?.data || [];
+
+  const dispatch = useAppDispatch();
+  // const { carts } = useAppSelector((state) => state.carts);
+  // console.log(carts, "cartsss");
+
+  const handleAddToCart = (product: TProducts) => {
+    dispatch(
+      addCart({
+        _id: product._id,
+        name: product.name,
+        image: product.image,
+        price: product.price,
+        quantity: product.stock,
+      })
+    );
+  };
 
   return (
     <div className="lg:px-5">
@@ -31,7 +50,7 @@ const BestSelling = () => {
         </div>
 
         <section className="grid grid-cols-2 lg:grid-cols-5 gap-4">
-          {products.slice(0, 10).map((product: any, idx: number) => (
+          {products.slice(0, 10).map((product: TProducts, idx: number) => (
             <div
               key={idx}
               className="card lg:h-[350px]   cursor-pointer group shadow-lg rounded-md border border-teal-300/3 border-slate-50/10 p-2 lg:px-3  lg:py-3"
@@ -88,7 +107,10 @@ const BestSelling = () => {
                   </div>
                 </div>
 
-                <div className="bg-[#e7e7e8] lg:flex hidden mx-auto justify-center text-center gap-2  border border-slate-300 py-[5px]  hover:border hover:duration-500 hover:border-teal-500 rounded-full px-2 lg:px-4 text-[13px] font-semibold">
+                <div
+                  onClick={() => handleAddToCart(product)}
+                  className="bg-[#e7e7e8] lg:flex hidden mx-auto justify-center text-center gap-2  border border-slate-300 py-[5px]  hover:border hover:duration-500 hover:border-teal-500 rounded-full px-2 lg:px-4 text-[13px] font-semibold"
+                >
                   Add To Cart
                 </div>
               </div>

@@ -6,8 +6,10 @@ import { Link, useNavigate } from "react-router-dom";
 // import banner from '../../../public/banner/card.jpg'
 import Container from "@/components/shared/Container";
 import { data } from "@/constant";
+import { useAppSelector } from "@/redux/hook";
 const Cart = () => {
   // const [products, setProducts] = useState(data);
+  const { carts } = useAppSelector((state) => state.carts);
 
   //get total price of cart items
   //   const subTotal = products?.reduce(
@@ -83,19 +85,19 @@ const Cart = () => {
             <div className="col-span-3 bgw w-full ">
               {data?.length > 0 ? (
                 <div>
-                  <div className="bg-white py-3 px-4 mb-3">
+                  <div className="bg-[#0C1117] py-3 px-4 mb-3">
                     <h2 className="text-md text-green-500 font-semibold">
                       Stock Products {data?.length}
                     </h2>
                   </div>
 
-                  {data?.map((item, idx) => (
+                  {carts?.map((item, idx) => (
                     <div key={idx} className="w-full ">
                       <div className="flex flex-wrap  gap-2 border-b border-slate-300 py-1 mb-2 justify-between items-center">
                         <div className="flex gap-2 flex-wrap items-center">
                           <img
                             className="w-[70px] h-[70px] rounded-md"
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfpgyqIf48U-ke2PDQCSaGqEkaYGhekglI5g&s"
+                            src={item?.image}
                             alt="product image"
                           />
                           <div className="pr-4 text-white">
@@ -104,20 +106,16 @@ const Cart = () => {
                               {/* Brand: {item?.brand ? item?.brand : "No Brand"} */}
                             </span>
                             <span className="hidden lg:block text-sm">
-                              only 5 items (s) in stock
+                              only {item?.quantity} items (s) in stock
                             </span>
                           </div>
                         </div>
 
                         <div>
                           <div className="pl-4 sm:pl-0">
-                            <h2 className="text-lg text-orange-500">
-                              $
-                              {/* {item.price -
-                                ((item.price / 100) * item.discount).toFixed(2)} */}
+                            <h2 className="text-lg text-white">
+                              ${item?.price}
                             </h2>
-                            <p className="line-through">${item?.price}</p>
-                            <p>{item?.discount ? `-${item?.discount}%` : ""}</p>
                           </div>
                         </div>
 
@@ -145,11 +143,11 @@ const Cart = () => {
                       src="https://cdni.iconscout.com/illustration/premium/thumb/empty-cart-2130356-1800917.png"
                       alt="cart"
                     />
-                    <p className="text-[#e66b2e text-center text-slate-700 font-semibold text-[17px]">
+                    <p className="text-[#e66b2e text-center text-white font-semibold text-[17px]">
                       Looks like your cart is empty 😔. Browse our products and
                       add something!
                     </p>
-                    <p className="text-center text-slate-700 font-semibold">
+                    <p className="text-center text-white font-semibold">
                       To Continue Shopping..
                     </p>
                     <div className="mx-auto text-center mt-4">
@@ -165,58 +163,50 @@ const Cart = () => {
               )}
             </div>
 
-            <div className="col-span-1 lg:h-[470px] bg-white border shadow-md w-full px-6 py-3">
-              <h2 className="font-bold text-slate-700 py-2 text-2xl">
+            <div className="col-span-1  bg-[#0C1117] rounded-md border shadow-md w-full px-6 py-3">
+              <h2 className="font-bold text-white py-2 text-2xl">
                 Cart Totals
               </h2>
               <div>
                 <div className="flex py-1 justify-between item-center">
-                  <p className="text-[#5F6C72] font-normal text-[18px]">
+                  <p className="text-white font-normal text-[18px]">
                     Sub-Total
                   </p>
-                  <p className="text-[16px] font-semibold">$55</p>
+                  <p className="text-[16px] text-white font-semibold">$55</p>
                 </div>
                 <div className="flex py-1 justify-between item-center">
-                  <p className="text-[#5F6C72] font-normal text-[18px]">
-                    Shipping
-                  </p>
-                  <p className="text-[16px] font-semibold">520</p>
+                  <p className="text-white font-normal text-[18px]">Shipping</p>
+                  <p className="text-[16px] text-white font-semibold">520</p>
                 </div>
                 <div className="flex  justify-between item-center border-b-2 border-slate-200 pt-1 pb-3">
-                  <p className="text-[#5F6C72] font-normal text-[18px]">
-                    Discount
-                  </p>
-                  <p className="text-[16px] font-semibold">5%</p>
+                  <p className="text-white font-normal text-[18px]">Discount</p>
+                  <p className="text-[16px] text-white font-semibold">5%</p>
                 </div>
                 <div className="flex py-1 justify-between item-center">
-                  <p className="text-[#5F6C72] font-semibold text-[18px]">
-                    Total
-                  </p>
+                  <p className="text-white font-semibold text-[18px]">Total</p>
                   <p className="text-[16px] font-semibold">
                     {/* ${subTotal - (subTotal / 100) * totalDiscount} */}
                   </p>
                 </div>
                 <button
                   // onClick={redirectCheckout}
-                  className="py-2 lg:py-3 w-full text-[15px] text-white font-semibold cursor-pointer uppercase bg-[#F85606] mt-4 rounded-md "
+                  className="py-2 lg:py-3 w-full text-[15px] text-white font-semibold cursor-pointer uppercase bg-[#3C956B] mt-4 rounded-md "
                 >
                   Proceed to Checkout{" "}
                 </button>
               </div>
 
-              <div className="mt-2  bg-white">
-                <h1 className="text-xl text-slate-700 py-2 font-bold">
-                  Coupon
-                </h1>
+              {/* <div className="mt-2  bg-white">
+                <h1 className="text-xl text-white py-2 font-bold">Coupon</h1>
                 <input
                   type="text"
                   placeholder="write here the coupon code"
-                  className="border outline-none border-[#fa8232] py-2 lg:py-3 px-3 w-full"
+                  className="border outline-none border-[#3C956B] py-2 lg:py-3 px-3 w-full"
                 />
-                <button className="py-2 lg:py-3 w-full text-[15px] text-white font-semibold cursor-pointer uppercase bg-[#F85606] rounded-md mt-2">
+                <button className="py-2 lg:py-3 w-full text-[15px] text-white font-semibold cursor-pointer uppercase bg-[#3C956B] rounded-t-md mt-2">
                   Coupon{" "}
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </Container>
