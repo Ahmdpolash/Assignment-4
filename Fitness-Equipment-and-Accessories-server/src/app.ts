@@ -5,6 +5,7 @@ import NotFound from "./middleware/NotFound";
 import GlobalErrorHandler from "./middleware/GlobalErrorHandler";
 import productRouter from "./modules/products/product.routes";
 import cartRouter from "./modules/cart/cart.routes";
+import { orderRoutes } from "./modules/order/order.routes";
 
 const app: Application = express();
 
@@ -20,6 +21,7 @@ app.use(
 app.use("/api/v1", productRouter);
 
 app.use("/api/v1", cartRouter);
+app.use("/api/v1", orderRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Fitness Equipment and Accessories Project");
