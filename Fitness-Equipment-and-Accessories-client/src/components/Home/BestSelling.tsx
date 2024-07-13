@@ -12,7 +12,7 @@ import { addCart } from "@/redux/features/addToCartSlice";
 const BestSelling = () => {
   const { data: apiResponse } = useGetProductsQuery('');
   const products = apiResponse?.data || [];
-  console.log(products,"homepage")
+  // console.log(products,"homepage")
 
   const dispatch = useAppDispatch();
   // const { carts } = useAppSelector((state) => state.carts);
