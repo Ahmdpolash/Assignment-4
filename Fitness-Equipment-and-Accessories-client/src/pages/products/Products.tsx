@@ -32,7 +32,7 @@ const Products = () => {
 
   const { data: apiResponse } = useGetProductsQuery(category);
   const products = apiResponse?.data || [];
-  console.log(products, "products");
+
   // console.log(isError,"error")
 
   // console.log(category);

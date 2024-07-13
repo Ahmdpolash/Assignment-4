@@ -23,10 +23,10 @@ const Navbar = () => {
         } w-screen h-screen backdrop-blur-sm top-0 left-0 z-10`}
       ></div>
       <Container>
-        <div className="flex justify-between py-2 items-center  shadow-sm">
+        <div className="flex justify-between py-2 px-5 items-center  shadow-sm">
           <div className="logo ">
             {/* <img className="w-[100px] h-[70px] object-fit" src={logo} alt="" /> */}
-            <h1 className="text-xl text-white">logo</h1>
+            <h1 className="text-xl text-white font-semibold">FlexFitness</h1>
           </div>
 
           {/* Desktop menu */}
