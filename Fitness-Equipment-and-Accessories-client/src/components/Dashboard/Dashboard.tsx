@@ -6,6 +6,7 @@ import { BsHeart } from "react-icons/bs";
 import { BsCartCheck } from "react-icons/bs";
 
 import { BiLogInCircle } from "react-icons/bi";
+import { RiProductHuntLine } from "react-icons/ri";
 
 import { IoBagCheckOutline } from "react-icons/io5";
 import { useState } from "react";
@@ -99,9 +100,9 @@ const Dashboard = () => {
               </li>
               <li className="flex justify-start text-white items-center gap-2 py-2">
                 <span className="text-xl">
-                  <FiPlus />
+                  <RiProductHuntLine />
                 </span>
-                <Link to="/dashboard/add-product" className="block">
+                <Link to="/dashboard/all-products" className="block">
                   All Product
                 </Link>
               </li>

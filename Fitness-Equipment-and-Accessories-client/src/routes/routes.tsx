@@ -1,5 +1,6 @@
 import App from "@/App";
 import AddProduct from "@/components/Dashboard/AddProduct";
+import AllProducts from "@/components/Dashboard/AllProducts";
 import Dashboard from "@/components/Dashboard/Dashboard";
 import DashboardHome from "@/components/Dashboard/DashboardHome";
 import MyCarts from "@/components/Dashboard/MyCarts";
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
       {
         path: "add-product",
         element: <AddProduct />,
+      },
+      {
+        path: "all-products",
+        element: <AllProducts />,
       },
     ],
   },
