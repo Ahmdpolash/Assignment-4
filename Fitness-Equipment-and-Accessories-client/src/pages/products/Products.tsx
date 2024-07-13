@@ -16,7 +16,7 @@ import { TCategory } from "@/types";
 const Products = () => {
   const [isOpen, setOpen] = useState(false);
   const [styles, setStyles] = useState("grid");
-  const [category, setCategory] = useState<string>('');
+  const [category, setCategory] = useState("");
 
   const handleOpen = () => {
     setOpen(true);
@@ -32,9 +32,10 @@ const Products = () => {
 
   const { data: apiResponse } = useGetProductsQuery(category);
   const products = apiResponse?.data || [];
-  console.log(products,"products")
+  console.log(products, "products");
+  // console.log(isError,"error")
 
-  console.log(category);
+  // console.log(category);
 
   return (
     <div className="px-">

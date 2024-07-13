@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 
 import { FaAngleRight } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
 // import banner from '../../../public/banner/card.jpg'
 import Container from "@/components/shared/Container";
-import { data } from "@/constant";
+// import { data } from "@/constant";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import {
   decrementQuantity,

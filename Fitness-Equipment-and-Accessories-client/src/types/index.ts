@@ -16,5 +16,5 @@ export type TProducts = {
 export type TProductResponse = {
   success: boolean;
   message: string;
-  data: TProducts[];
+  data: TProducts;
 };

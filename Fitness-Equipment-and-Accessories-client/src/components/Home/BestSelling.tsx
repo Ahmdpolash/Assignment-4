@@ -10,8 +10,9 @@ import { TProducts } from "@/types";
 import { addCart } from "@/redux/features/addToCartSlice";
 
 const BestSelling = () => {
-  const { data: apiResponse } = useGetProductsQuery([]);
+  const { data: apiResponse } = useGetProductsQuery('');
   const products = apiResponse?.data || [];
+  console.log(products,"homepage")
 
   const dispatch = useAppDispatch();
   // const { carts } = useAppSelector((state) => state.carts);
@@ -24,7 +25,7 @@ const BestSelling = () => {
         name: product.name,
         image: product.image,
         price: product.price,
-        quantity: product.stock,
+        stock: product.stock,
       })
     );
   };
