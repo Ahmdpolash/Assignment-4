@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-
 import { FaListUl } from "react-icons/fa6";
 
 import { IoGrid } from "react-icons/io5";

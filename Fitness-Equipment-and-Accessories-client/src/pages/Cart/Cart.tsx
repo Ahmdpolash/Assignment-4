@@ -16,16 +16,14 @@ const Cart = () => {
   const { carts } = useAppSelector((state) => state.carts);
 
   //get total price of cart items
-  // const subTotal = carts?.reduce(
-  //   (total, item) => total + parseFloat(item.price) * parseFloat(item.quantity),
-  //   0
-  // );
+  const subTotal = carts?.reduce(
+    (total, item) => total + parseFloat(item.price) * parseFloat(item.quantity),
+    0
+  );
 
   const dispatch = useAppDispatch();
 
   const handleIncrement = (id: string) => {
-    console.log(id);
-
     dispatch(incrementQuantity(id));
   };
   const handleDecrement = (id: string) => {
@@ -39,18 +37,18 @@ const Cart = () => {
   }, []);
 
   //redirect to checkout page :
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const redirectCheckout = () => {
-  //   navigate("/checkout", {
-  //     state: {
-  //       products: products,
-  //       price: 500,
-  //       shipping_fee: 70,
-  //       // items: products.length,
-  //     },
-  //   });
-  // };
+  const redirectCheckout = () => {
+    navigate("/checkout", {
+      state: {
+        products: carts,
+        price: subTotal + 70,
+        shipping_fee: 70,
+        // items: products.length,
+      },
+    });
+  };
 
   return (
     <div>
@@ -80,7 +78,7 @@ const Cart = () => {
                 <div>
                   <div className="bg-[#0C1117] py-3 px-4 mb-3">
                     <h2 className="text-md text-green-500 font-semibold">
-                      Stock Products {data?.length}
+                      Stock Products {carts?.length}
                     </h2>
                   </div>
 
@@ -94,12 +92,12 @@ const Cart = () => {
                             alt="product image"
                           />
                           <div className="pr-4 text-white">
-                            <h2 className="text-xl">aldfjasdjfasjkl</h2>
+                            <h2 className="text-xl">{item.name}</h2>
                             <span className="hidden lg:block text-sm">
                               {/* Brand: {item?.brand ? item?.brand : "No Brand"} */}
                             </span>
                             <span className="hidden lg:block text-sm">
-                              only {item?.quantity} items (s) in stock
+                              only {item?.stock} items in stock
                             </span>
                           </div>
                         </div>
@@ -121,7 +119,7 @@ const Cart = () => {
                               -
                             </div>
 
-                            <div className="px-3">{item?.quantity}</div>
+                            <div className="px-3">{item.quantity}</div>
 
                             <div
                               onClick={() => handleIncrement(item?._id)}
@@ -175,41 +173,33 @@ const Cart = () => {
                   <p className="text-white font-normal text-[18px]">
                     Sub-Total
                   </p>
-                  <p className="text-[16px] text-white font-semibold">$55</p>
+                  <p className="text-[16px] text-white font-semibold">
+                    ${subTotal}
+                  </p>
                 </div>
                 <div className="flex py-1 justify-between item-center">
                   <p className="text-white font-normal text-[18px]">Shipping</p>
-                  <p className="text-[16px] text-white font-semibold">520</p>
+                  <p className="text-[16px] text-white font-semibold">70</p>
                 </div>
                 <div className="flex  justify-between item-center border-b-2 border-slate-200 pt-1 pb-3">
                   <p className="text-white font-normal text-[18px]">Discount</p>
-                  <p className="text-[16px] text-white font-semibold">5%</p>
+                  <p className="text-[16px] text-white font-semibold">
+                    not available
+                  </p>
                 </div>
                 <div className="flex py-1 justify-between item-center">
                   <p className="text-white font-semibold text-[18px]">Total</p>
-                  <p className="text-[16px] font-semibold">
-                    {/* ${subTotal - (subTotal / 100) * totalDiscount} */}
+                  <p className="text-[16px] text-white font-semibold">
+                    ${subTotal + 70}
                   </p>
                 </div>
                 <button
-                  // onClick={redirectCheckout}
+                  onClick={redirectCheckout}
                   className="py-2 lg:py-3 w-full text-[15px] text-white font-semibold cursor-pointer uppercase bg-[#3C956B] mt-4 rounded-md "
                 >
                   Proceed to Checkout{" "}
                 </button>
               </div>
-
-              {/* <div className="mt-2  bg-white">
-                <h1 className="text-xl text-white py-2 font-bold">Coupon</h1>
-                <input
-                  type="text"
-                  placeholder="write here the coupon code"
-                  className="border outline-none border-[#3C956B] py-2 lg:py-3 px-3 w-full"
-                />
-                <button className="py-2 lg:py-3 w-full text-[15px] text-white font-semibold cursor-pointer uppercase bg-[#3C956B] rounded-t-md mt-2">
-                  Coupon{" "}
-                </button>
-              </div> */}
             </div>
           </div>
         </Container>

@@ -26,6 +26,7 @@ const SingleProduct = () => {
         name: product.name,
         image: product.image,
         stock: product.stock,
+        quantity: quantity,
         price: product.price,
       })
     );

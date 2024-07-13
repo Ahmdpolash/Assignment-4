@@ -6,6 +6,7 @@ import MyCarts from "@/components/Dashboard/MyCarts";
 import Order from "@/components/Dashboard/Order";
 import About from "@/pages/about/About";
 import Cart from "@/pages/Cart/Cart";
+import Checkout from "@/pages/checkout/Checkout";
 import Home from "@/pages/Home/Home";
 import Login from "@/pages/Login/Login";
 import Products from "@/pages/products/Products";
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: "/carts",
         element: <Cart />,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
       },
     ],
   },

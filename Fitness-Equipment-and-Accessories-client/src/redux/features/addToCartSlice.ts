@@ -6,7 +6,7 @@ type TAddtoCart = {
   name: string;
   image: string;
   price: number;
-  stock?: number;
+  stock: number;
   quantity?: number;
 };
 
@@ -27,7 +27,10 @@ const addToCartSlice = createSlice({
         (item) => item._id == action.payload._id
       );
       if (!isExist) {
-        state.carts.push({ ...action.payload, quantity: 1 });
+        state.carts.push({
+          ...action.payload,
+          quantity: action.payload.quantity || 1,
+        });
         toast.success("add to cart successfully");
       } else {
         toast.error("already added to cart");
@@ -44,24 +47,17 @@ const addToCartSlice = createSlice({
     loadCart: (state, action) => {
       state.carts = action.payload;
     },
-    incrementQuantity: (state, action) => {
-      const product = state.carts.find((item) => {
-        console.log(item._id);
-        item._id == action.payload.id;
-      });
-      console.log(product, action.payload);
-
-      if (product) {
-        product.quantity++;
-        // state.carts.push(product);
+    incrementQuantity: (state, action: PayloadAction<string>) => {
+      const product = state.carts.find((item) => item._id === action.payload);
+      if (product && product.stock > product.quantity!) {
+        product.quantity = (product.quantity || 0) + 1;
       }
     },
+
     decrementQuantity: (state, action) => {
-      const product = state.carts.find((item) => item._id == action.payload.id);
-      if (product) {
-        console.log(product);
-        product.quantity--;
-        state.carts.push(product);
+      const product = state.carts.find((item) => item._id === action.payload);
+      if (product && product.quantity! > 1) {
+        product.quantity = (product.quantity || 0) - 1;
       }
     },
   },
