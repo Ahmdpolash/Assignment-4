@@ -9,10 +9,10 @@ import { addCart } from "@/redux/features/addToCartSlice";
 import { TProducts } from "@/types";
 
 const ProductCard = ({ data }: any) => {
-  console.log(data);
+  // console.log(data);
   const dispatch = useAppDispatch();
   const { carts } = useAppSelector((state) => state.carts);
-  console.log(carts, "cartsss");
+  // console.log(carts, "cartsss");
 
   const handleAddToCart = (product: TProducts) => {
     dispatch(
