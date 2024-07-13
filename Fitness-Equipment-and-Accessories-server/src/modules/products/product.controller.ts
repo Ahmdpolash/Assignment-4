@@ -38,7 +38,7 @@ const getSingleProduct: RequestHandler = catchAsync(async (req, res) => {
 
   res.status(200).json({
     success: true,
-    message: " single students are retrive successfully",
+    message: " single item are retrive successfully",
     data: result,
   });
 });
@@ -54,9 +54,22 @@ const deleteProduct: RequestHandler = catchAsync(async (req, res) => {
   });
 });
 
+const updateProduct: RequestHandler = catchAsync(async (req, res) => {
+  const payload = req.body;
+
+  const result = await productServices.updateProductInDb(payload);
+
+  res.status(200).json({
+    success: true,
+    message: "item updated successfully",
+    data: result,
+  });
+});
+
 export const productControllers = {
   createProduct,
   getAllProudcts,
   getSingleProduct,
   deleteProduct,
+  updateProduct,
 };
