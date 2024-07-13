@@ -16,14 +16,15 @@ export const baseApi = createApi({
     getProducts: builder.query({
       query: (searchTerm) => {
         const params = new URLSearchParams();
-        if (params) {
-          params.append("category" || "", searchTerm);
+        console.log(params, "1st");
+        if (searchTerm) {
+          params.append("category", searchTerm);
         }
         console.log(params, "api");
         return {
           method: "GET",
           url: "/products",
-          params: params || {},
+          params: params,
         };
       },
     }),
@@ -36,4 +37,8 @@ export const baseApi = createApi({
   }),
 });
 
-export const { useAddProductsMutation, useGetProductsQuery , useSaveOrderMutation} = baseApi;
+export const {
+  useAddProductsMutation,
+  useGetProductsQuery,
+  useSaveOrderMutation,
+} = baseApi;
