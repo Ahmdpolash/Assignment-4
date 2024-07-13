@@ -11,6 +11,7 @@ import { IoBagCheckOutline } from "react-icons/io5";
 import { useState } from "react";
 import Navbar from "../shared/Navbar";
 import Footer from "../shared/Footer";
+import { FiPlus } from "react-icons/fi";
 
 const Dashboard = () => {
   const [open, setOpen] = useState(false);
@@ -96,6 +97,14 @@ const Dashboard = () => {
                   Dashboard
                 </Link>
               </li>
+              <li className="flex justify-start text-white items-center gap-2 py-2">
+                <span className="text-xl">
+                  <FiPlus />
+                </span>
+                <Link to="/dashboard/add-product" className="block">
+                  Add Product
+                </Link>
+              </li>
 
               <li className="flex justify-start items-center text-white gap-2 py-2">
                 <span className="text-xl">
@@ -113,14 +122,15 @@ const Dashboard = () => {
                   My Carts
                 </Link>
               </li>
-              <li className="flex justify-start text-white items-center gap-2 py-2">
+
+              {/* <li className="flex justify-start text-white items-center gap-2 py-2">
                 <span className="text-xl">
                   <BsHeart />
                 </span>
                 <Link to="/dashboard/my-wishlists" className="block">
                   Wishlist
                 </Link>
-              </li>
+              </li> */}
 
               <li className="flex justify-start text-white items-center gap-2 py-2 cursor-pointer">
                 <span className="text-xl">

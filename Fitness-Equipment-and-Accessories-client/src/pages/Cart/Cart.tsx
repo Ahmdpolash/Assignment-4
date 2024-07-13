@@ -6,38 +6,31 @@ import { Link, useNavigate } from "react-router-dom";
 // import banner from '../../../public/banner/card.jpg'
 import Container from "@/components/shared/Container";
 import { data } from "@/constant";
-import { useAppSelector } from "@/redux/hook";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import {
+  decrementQuantity,
+  incrementQuantity,
+} from "@/redux/features/addToCartSlice";
 const Cart = () => {
   // const [products, setProducts] = useState(data);
   const { carts } = useAppSelector((state) => state.carts);
 
   //get total price of cart items
-  //   const subTotal = products?.reduce(
-  //     (total, item) => total + parseFloat(item.price) * parseFloat(item.quantity),
-  //     0
-  //   );
+  // const subTotal = carts?.reduce(
+  //   (total, item) => total + parseFloat(item.price) * parseFloat(item.quantity),
+  //   0
+  // );
 
-  //get discount price
-  //   const totalDiscount = products?.reduce((total, item) => {
-  //     if (!isNaN(parseFloat(item.discount))) {
-  //       return total + parseFloat(item.discount);
-  //     } else {
-  //       return total;
-  //     }
-  //   }, 0);
+  const dispatch = useAppDispatch();
 
-  //store context data to a state variable
-  //   useEffect(() => {
-  //     if (data) {
-  //       setProducts(data);
-  //     }
-  //   }, [data]);
+  const handleIncrement = (id: string) => {
+    console.log(id);
 
-  //grouping product and make dividing different vendor product
-
-  //cart quantity increment
-
-  // cart item deletion
+    dispatch(incrementQuantity(id));
+  };
+  const handleDecrement = (id: string) => {
+    dispatch(decrementQuantity(id));
+  };
 
   //scroll to to of page
 
@@ -83,7 +76,7 @@ const Cart = () => {
         <Container>
           <div className="grid grid-cols-1 py-4 lg:grid-cols-4 gap- lg:gap-4">
             <div className="col-span-3 bgw w-full ">
-              {data?.length > 0 ? (
+              {carts?.length > 0 ? (
                 <div>
                   <div className="bg-[#0C1117] py-3 px-4 mb-3">
                     <h2 className="text-md text-green-500 font-semibold">
@@ -121,11 +114,21 @@ const Cart = () => {
 
                         <div className="flex gap-2 flex-col">
                           <div className="flex bg-slate-200 h-[30px] justify-center items-center text-xl">
-                            <div className="px-3 cursor-pointer">-</div>
+                            <div
+                              onClick={() => handleDecrement(item?._id)}
+                              className="px-3 cursor-pointer"
+                            >
+                              -
+                            </div>
 
-                            <div className="px-3">0</div>
+                            <div className="px-3">{item?.quantity}</div>
 
-                            <div className="px-3 cursor-pointer">+</div>
+                            <div
+                              onClick={() => handleIncrement(item?._id)}
+                              className="px-3 cursor-pointer"
+                            >
+                              +
+                            </div>
                           </div>
                           <button className="px-5 py-[3px] bg-[#F85606] text-white">
                             Delete
@@ -148,12 +151,12 @@ const Cart = () => {
                       add something!
                     </p>
                     <p className="text-center text-white font-semibold">
-                      To Continue Shopping..
+                      To Continue Buy Product..
                     </p>
                     <div className="mx-auto text-center mt-4">
                       <Link
-                        className="px-7 rounded-md bg-[#F85606] py-2   text-white"
-                        to="/shop"
+                        className="px-7 rounded-md bg-[#3C956B] py-2   text-white"
+                        to="/products"
                       >
                         Shop Now
                       </Link>

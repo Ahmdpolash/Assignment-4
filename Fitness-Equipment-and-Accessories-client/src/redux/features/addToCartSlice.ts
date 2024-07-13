@@ -6,7 +6,8 @@ type TAddtoCart = {
   name: string;
   image: string;
   price: number;
-  quantity: number;
+  stock?: number;
+  quantity?: number;
 };
 
 type TInitialState = {
@@ -26,7 +27,7 @@ const addToCartSlice = createSlice({
         (item) => item._id == action.payload._id
       );
       if (!isExist) {
-        state.carts.push({ ...action.payload });
+        state.carts.push({ ...action.payload, quantity: 1 });
         toast.success("add to cart successfully");
       } else {
         toast.error("already added to cart");
@@ -43,10 +44,36 @@ const addToCartSlice = createSlice({
     loadCart: (state, action) => {
       state.carts = action.payload;
     },
+    incrementQuantity: (state, action) => {
+      const product = state.carts.find((item) => {
+        console.log(item._id);
+        item._id == action.payload.id;
+      });
+      console.log(product, action.payload);
+
+      if (product) {
+        product.quantity++;
+        // state.carts.push(product);
+      }
+    },
+    decrementQuantity: (state, action) => {
+      const product = state.carts.find((item) => item._id == action.payload.id);
+      if (product) {
+        console.log(product);
+        product.quantity--;
+        state.carts.push(product);
+      }
+    },
   },
 });
 
-export const { addCart, removeItem, clearCart, loadCart } =
-  addToCartSlice.actions;
+export const {
+  addCart,
+  removeItem,
+  clearCart,
+  loadCart,
+  incrementQuantity,
+  decrementQuantity,
+} = addToCartSlice.actions;
 
 export default addToCartSlice.reducer;

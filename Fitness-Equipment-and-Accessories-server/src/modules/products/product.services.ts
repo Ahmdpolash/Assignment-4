@@ -6,6 +6,7 @@ import { Product } from "./product.model";
 //? Product added on the collection
 const productSaveIntoDb = async (product: TProducts) => {
   const result = await Product.create(product);
+
   return result;
 };
 

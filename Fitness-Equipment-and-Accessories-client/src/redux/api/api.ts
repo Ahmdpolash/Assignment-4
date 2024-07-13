@@ -5,11 +5,13 @@ export const baseApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/v1" }),
   endpoints: (builder) => ({
     addProducts: builder.mutation({
-      query: (data) => ({
-        method: "POST",
-        url: "/create-product",
-        body: data,
-      }),
+      query: (data) => {
+        return {
+          method: "POST",
+          url: "/create-product",
+          body: data,
+        };
+      },
     }),
     getProducts: builder.query({
       query: () => ({

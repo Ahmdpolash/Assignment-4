@@ -5,8 +5,10 @@ import { RxCross1 } from "react-icons/rx";
 import Container from "./Container";
 import { navbarList } from "@/constant";
 import { BsCart2 } from "react-icons/bs";
+import { useAppSelector } from "@/redux/hook";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const { carts } = useAppSelector((state) => state.carts);
 
   const toggleMenu = () => {
     setOpen(!open);
@@ -65,10 +67,10 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center">
-            <Link to={'/carts'} className="relative cursor-pointer">
+            <Link to={"/carts"} className="relative cursor-pointer">
               <BsCart2 className=" text-4xl font-semibold text-white" />
               <div className="size-5  text-center text-sm font-bold bg-sky-100 top-0 right-0 rounded-full absolute text-sky-600">
-                3
+                {carts?.length}
               </div>
             </Link>
 
