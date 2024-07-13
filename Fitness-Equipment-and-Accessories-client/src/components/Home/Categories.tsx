@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import Container from "../shared/Container";
 import { categories } from "@/constant/index";
 const Categories = () => {

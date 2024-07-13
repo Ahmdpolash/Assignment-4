@@ -43,6 +43,7 @@ const getSingleProduct: RequestHandler = catchAsync(async (req, res) => {
 
 const deleteProduct: RequestHandler = catchAsync(async (req, res) => {
   const { id } = req.params;
+  console.log(id,)
 
   const result = await productServices.deleteProductFromDb(id);
   res.status(200).json({

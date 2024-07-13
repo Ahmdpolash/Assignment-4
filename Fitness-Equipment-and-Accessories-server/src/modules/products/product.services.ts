@@ -38,7 +38,12 @@ const getSingleProductFromDb = async (id: any) => {
   return result;
 };
 
+<<<<<<< HEAD
 const deleteProductFromDb = async (id: any) => {
+=======
+const deleteProductFromDb = async (id: string) => {
+  console.log(id,"serve")
+>>>>>>> 06a8b466ed13f798c0dab797df3533e09202c9dd
   const result = await Product.findByIdAndDelete(id);
   return result;
 };
