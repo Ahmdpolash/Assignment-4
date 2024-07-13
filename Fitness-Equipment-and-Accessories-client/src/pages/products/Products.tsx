@@ -17,6 +17,8 @@ const Products = () => {
   const [isOpen, setOpen] = useState(false);
   const [styles, setStyles] = useState("grid");
   const [category, setCategory] = useState("");
+  const [sorting, setSorting] = useState('')
+  console.log(sorting)
 
   const handleOpen = () => {
     setOpen(true);
@@ -30,7 +32,7 @@ const Products = () => {
     scroll(0, 0);
   }, []);
 
-  const { data: apiResponse } = useGetProductsQuery(category);
+  const { data: apiResponse } = useGetProductsQuery({category,sorting});
   const products = apiResponse?.data || [];
 
   // console.log(isError,"error")
@@ -108,26 +110,27 @@ const Products = () => {
                   <select
                     className="border outline-none py-1 text-center shadow-md bg-transparent text-white rounded-md"
                     name=""
+                    onChange={(e)=>setSorting(e.target.value)}
                   >
                     <option className="bg-transparent text-black" value="">
                       Sort By
                     </option>
                     <option
                       className="bg-transparent text-black"
-                      value="lowToHigh"
+                      value="price"
                     >
                       Low to High Price
                     </option>
                     <option
                       className="bg-transparent text-black"
-                      value="highToLow"
+                      value="-price"
                     >
                       High to Low Price
                     </option>
-                    <option className="bg-transparent text-black" value="a-z">
+                    <option className="bg-transparent text-black" value="name">
                       Sort by Letter (A-Z)
                     </option>
-                    <option className="bg-transparent text-black" value="z-a">
+                    <option className="bg-transparent text-black" value="-name">
                       Sort by Letter (Z-A)
                     </option>
                   </select>

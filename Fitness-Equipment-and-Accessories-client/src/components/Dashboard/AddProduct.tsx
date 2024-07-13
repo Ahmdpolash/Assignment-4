@@ -21,11 +21,13 @@ const AddProduct = () => {
     const price = Number(form.price.value);
 
     const description = form.description.value;
+    const image = form.image.value;
 
-    const data = { name, category, stock, price, description };
+    const data = { name, category, stock, price, description,image };
     console.log(data);
 
-    createProduct(data);
+     const res= createProduct(data);
+     console.log(res,"res")
   };
 
   if (isSuccess) {
