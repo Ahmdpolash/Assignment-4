@@ -19,8 +19,6 @@ const createProduct: RequestHandler = catchAsync(async (req, res) => {
 // get all products and get filtered products from the database
 
 const getAllProudcts: RequestHandler = catchAsync(async (req, res) => {
-
-
   const result = await productServices.getProductsFromDb(req.query);
 
   res.status(200).json({
@@ -45,6 +43,7 @@ const getSingleProduct: RequestHandler = catchAsync(async (req, res) => {
 
 const deleteProduct: RequestHandler = catchAsync(async (req, res) => {
   const { id } = req.params;
+  console.log(id,)
 
   const result = await productServices.deleteProductFromDb(id);
   res.status(200).json({

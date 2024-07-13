@@ -38,6 +38,7 @@ const getSingleProductFromDb = async (id: any) => {
 };
 
 const deleteProductFromDb = async (id: string) => {
+  console.log(id,"serve")
   const result = await Product.findByIdAndDelete(id);
   return result;
 };
