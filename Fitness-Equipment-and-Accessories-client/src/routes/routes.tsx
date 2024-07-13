@@ -9,6 +9,7 @@ import Cart from "@/pages/Cart/Cart";
 import Checkout from "@/pages/checkout/Checkout";
 import Home from "@/pages/Home/Home";
 import Login from "@/pages/Login/Login";
+import Payment from "@/pages/payment/Payment";
 import Products from "@/pages/products/Products";
 import Register from "@/pages/register/Register";
 import SingleProduct from "@/pages/singleProduct/SingleProduct";
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <Checkout />,
+      },
+      {
+        path: "/payment",
+        element: <Payment />,
       },
     ],
   },

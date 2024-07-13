@@ -17,7 +17,8 @@ const Cart = () => {
 
   //get total price of cart items
   const subTotal = carts?.reduce(
-    (total, item) => total + parseFloat(item.price) * parseFloat(item.quantity),
+    (total: number, item: any) =>
+      total + parseFloat(item.price) * parseFloat(item.quantity),
     0
   );
 
