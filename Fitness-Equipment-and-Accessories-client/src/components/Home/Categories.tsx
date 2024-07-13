@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Container from "../shared/Container";
 import { categories } from "@/constant/index";
 const Categories = () => {
@@ -13,7 +14,8 @@ const Categories = () => {
 
         <div className="mt-5 grid grid-cols-2 lg:grid-cols-6 gap-6 cursor-pointer">
           {categories?.map((category: any, idx: number) => (
-            <div
+            <Link
+              to={`/products`}
               key={idx}
               className="border group border-teal-200/40 bg-[#151b25] rounded-md h-[200px] "
             >
@@ -26,7 +28,7 @@ const Categories = () => {
               <p className="text-center mt-6 group-hover:text-teal-400 font-medium ">
                 {category.name}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
       </Container>

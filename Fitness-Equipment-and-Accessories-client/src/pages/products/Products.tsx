@@ -12,13 +12,15 @@ import MobileSidebar from "@/components/product/MobileSidebar";
 
 import { categories } from "@/constant/index";
 import { TCategory } from "@/types";
+import { Input } from "@/components/ui/input";
 
 const Products = () => {
   const [isOpen, setOpen] = useState(false);
   const [styles, setStyles] = useState("grid");
   const [category, setCategory] = useState("");
-  const [sorting, setSorting] = useState('')
-  console.log(sorting)
+  const [sorting, setSorting] = useState("");
+  const [search, setSearch] = useState("");
+  console.log(search);
 
   const handleOpen = () => {
     setOpen(true);
@@ -32,7 +34,7 @@ const Products = () => {
     scroll(0, 0);
   }, []);
 
-  const { data: apiResponse } = useGetProductsQuery({category,sorting});
+  const { data: apiResponse } = useGetProductsQuery({ category, sorting,search });
   const products = apiResponse?.data || [];
   console.log(products, "products");
   // console.log(isError,"error")
@@ -104,21 +106,23 @@ const Products = () => {
             <div className=" lg:h-[60px] w-full  mb-5 bg-[#1d2632]">
               <div className="flex  items-center px-4 py-3 justify-between">
                 <h2 className="font-medium text-white text-[16px] md:text-xl lg:text-xl ">
-                  All Products ({products?.length})
+                  <Input
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="search your product"
+                    className="text-black"
+                    type="text"
+                  />
                 </h2>
                 <div className="flex gap-2 lg:gap-4 items-center">
                   <select
                     className="border outline-none py-1 text-center shadow-md bg-transparent text-white rounded-md"
                     name=""
-                    onChange={(e)=>setSorting(e.target.value)}
+                    onChange={(e) => setSorting(e.target.value)}
                   >
                     <option className="bg-transparent text-black" value="">
                       Sort By
                     </option>
-                    <option
-                      className="bg-transparent text-black"
-                      value="price"
-                    >
+                    <option className="bg-transparent text-black" value="price">
                       Low to High Price
                     </option>
                     <option
