@@ -34,10 +34,8 @@ const SingleProduct = () => {
 
   const { name, category, description, stock, price, image } = data.data;
 
-  let available = stock;
-
   const handleIncrement = () => {
-    if (quantity < available) {
+    if (quantity < stock) {
       setQuantity(quantity + 1);
     } else {
       toast.error("Product limit exceeded");

@@ -11,15 +11,25 @@ import { AiOutlineDelete } from "react-icons/ai";
 import Modal from "../modal/Modal";
 import { useDeleteProductMutation, useGetProductsQuery } from "@/redux/api/api";
 import { TProducts } from "@/types";
+import toast, { Toaster } from "react-hot-toast";
 
 const AllProducts = () => {
-  const { data } = useGetProductsQuery("");
+  const { data, isLoading } = useGetProductsQuery("");
 
   const [deleteProduct] = useDeleteProductMutation();
+  // const {order} = useor
 
-  const handleDelete = (id: string) => {
-    deleteProduct(id);
+  const handleDelete = (id: any) => {
+    deleteProduct(id).then(() => toast.success("Product deleted successfully"));
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-[250px]">
+        <div className="w-10 h-10 animate-[spin_1s_linear_infinite]  mx-auto text-center rounded-full border-4 border-r-[#3B9DF8] border-[#3b9df84b]"></div>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -53,6 +63,7 @@ const AllProducts = () => {
         </TableBody>
       </Table>
 
+      <Toaster />
       {/* modal */}
     </div>
   );

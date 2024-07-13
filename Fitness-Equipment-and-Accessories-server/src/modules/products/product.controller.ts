@@ -47,7 +47,7 @@ const deleteProduct: RequestHandler = catchAsync(async (req, res) => {
   const result = await productServices.deleteProductFromDb(id);
   res.status(200).json({
     success: true,
-    message: "Item deleted successfully",
+    message: "Item deleted successfully"
     data: result,
   });
 });

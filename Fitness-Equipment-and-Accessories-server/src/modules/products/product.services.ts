@@ -33,11 +33,12 @@ const getProductsFromDb = async (query: Record<string, unknown>) => {
 
 //?get single product from the collection
 const getSingleProductFromDb = async (id: any) => {
+  console.log(id);
   const result = await Product.findById(id);
   return result;
 };
 
-const deleteProductFromDb = async (id: string) => {
+const deleteProductFromDb = async (id: any) => {
   const result = await Product.findByIdAndDelete(id);
   return result;
 };

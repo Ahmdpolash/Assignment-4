@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Container from "../shared/Container";
 import { categories } from "@/constant/index";
 const Categories = () => {
@@ -13,20 +14,22 @@ const Categories = () => {
 
         <div className="mt-5 grid grid-cols-2 lg:grid-cols-6 gap-6 cursor-pointer">
           {categories?.map((category: any, idx: number) => (
-            <div
-              key={idx}
-              className="border group border-teal-200/40 bg-[#151b25] rounded-md h-[200px] "
-            >
-              <img
-                className="rounded-md w-full group-hover:scale-95 transition-all duration-300 h-[120px] object-cover "
-                src={category.image}
-                alt=""
-              />
+            <Link to={`/product/${category.name}`}>
+              <div
+                key={idx}
+                className="border group border-teal-200/40 bg-[#151b25] rounded-md h-[200px] "
+              >
+                <img
+                  className="rounded-md w-full group-hover:scale-95 transition-all duration-300 h-[120px] object-cover "
+                  src={category.image}
+                  alt=""
+                />
 
-              <p className="text-center mt-6 group-hover:text-teal-400 font-medium ">
-                {category.name}
-              </p>
-            </div>
+                <p className="text-center mt-6 group-hover:text-teal-400 font-medium ">
+                  {category.name}
+                </p>
+              </div>
+            </Link>
           ))}
         </div>
       </Container>

@@ -2,8 +2,15 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const baseApi = createApi({
   reducerPath: "baseApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/v1" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "http://localhost:5000/api/v1",
+    prepareHeaders: (headers) => {
+      headers.set("Content-Type", "application/json");
+      return headers;
+    },
+  }),
   tagTypes: ["product"],
+
   endpoints: (builder) => ({
     addProducts: builder.mutation({
       query: (data) => {
@@ -18,11 +25,16 @@ export const baseApi = createApi({
     getProducts: builder.query({
       query: (searchTerm) => {
         const params = new URLSearchParams();
-        console.log(params, "1st");
-        if (searchTerm) {
-          params.append("category", searchTerm);
+        console.log(searchTerm);
+        if (searchTerm.category || searchTerm.sorting) {
+          //
+          if (searchTerm.sorting) {
+            params.append("sort", searchTerm.sorting);
+          }
+          if (searchTerm.category) {
+            params.append("category", searchTerm.category);
+          }
         }
-        console.log(params, "api");
         return {
           method: "GET",
           url: "/products",
@@ -33,15 +45,19 @@ export const baseApi = createApi({
     }),
 
     saveOrder: builder.mutation({
-      query: () => ({
-        method: "POST",
-        url: "/order/create-order",
-      }),
+      query: (data) => {
+        console.log(data);
+        return {
+          method: "POST",
+          url: "/order/create-order",
+          body: data,
+        };
+      },
     }),
     deleteProduct: builder.mutation({
       query: (id) => ({
         method: "DELETE",
-        url: `/products/:${id}`,
+        url: `/products/${id}`,
       }),
       invalidatesTags: ["product"],
     }),

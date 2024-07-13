@@ -3,6 +3,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useSaveOrderMutation } from "@/redux/api/api";
 import { TAddtoCart } from "@/redux/features/addToCartSlice";
 import { ChangeEvent, useState } from "react";
+import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Checkout = () => {
@@ -15,6 +16,7 @@ const Checkout = () => {
     name: "",
     email: "",
     phone: "",
+    house: "",
     city: "",
     zip: "",
   });
@@ -34,17 +36,16 @@ const Checkout = () => {
     });
   };
 
-  const [placeOrder, { isError }] = useSaveOrderMutation();
-
-  console.log(isError);
+  const [placeOrder] = useSaveOrderMutation();
 
   const handlePlaceOrder = () => {
     const data = {
       name: states.name,
       email: states.email,
       phone: states.phone,
+      house: states.house,
       city: states.city,
-      zip: states.zip,
+      zipCode: states.zip,
       totalPrice: price,
 
       products: products.map((product: TAddtoCart) => ({
@@ -53,7 +54,7 @@ const Checkout = () => {
         quantity: product.quantity,
       })),
     };
-    placeOrder(data);
+    placeOrder(data).then(() => toast.success("Order Placed Success"));
   };
 
   return (
@@ -242,6 +243,7 @@ const Checkout = () => {
             </div>
           </div>
         </div>
+        
       </section>
     </div>
   );

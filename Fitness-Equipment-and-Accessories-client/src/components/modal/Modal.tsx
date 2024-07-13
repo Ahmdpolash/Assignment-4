@@ -106,7 +106,7 @@ const Modal = () => {
             <Label htmlFor="description" className="text-right">
               Description
             </Label>
-            <Textarea  className="border border-black w-full" />
+            <Textarea className="border border-black w-full" />
           </div>
         </div>
         <DialogFooter>

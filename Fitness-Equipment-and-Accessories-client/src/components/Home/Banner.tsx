@@ -1,29 +1,61 @@
+import plusIcon from "@/assets/plus.png";
+import heroImage from "@/assets/heroImage.png";
+import shapeImage from "@/assets/shape01.png";
+import { MdArrowForwardIos } from "react-icons/md";
+
+import { Link } from "react-router-dom";
 const Banner = () => {
   return (
-    <div
-      className="h-ful h-[calc(100vh_-_80px)] -z- w-full relative"
-      style={{
-        backgroundImage: "url(https://i.ibb.co/whb9Vdm/Hero.png)",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-      }}
-    >
-      <div className="w-full h-full relative  bg-gradient-to-l from-[#111] opacity-35"></div>
+    <section className="relative overflow-hidden">
+      <img
+        src={shapeImage}
+        alt=""
+        className="absolute bottom-0 -left-32 -z-10"
+      />
+      <div className="container mx-auto px-6">
+        <div className="h-[88vh] flex items-center">
+          <div className="grid lg:grid-cols-2 justify-between items-center">
+            <div className="relative">
+              <div className="2xl:text-9xl xl:text-8xl text-white md:text-7xl text-5xl">
+                <h2 className="flex gap-6">
+                  Muscles <img className="w-14 h-14" src={plusIcon} alt="" />
+                </h2>
 
-      <div className="z-20 text-white absolute max-w-2xl  top-[20%] left-[10%] right-[50% space-y-3">
-        <h1 className="text-3xl leading-9 tracking-wide font-semibold ">
-          Transform Your <br /> Fitness Into Shape{" "}
-        </h1>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt
-          voluptatibus officia eos repellat vero quos ab debitis perspiciatis
-          dolor pariatur! Itaque fuga eveniet dolorum exercitationem eum quae
-          neque eaque quo ea quam ipsam eos delectus quia iusto recusandae, aut
-          cumque distinctio culpa corrupti rerum nihil dolorem tempore minima
-          repudiandae! Quos!
-        </p>
+                <h2 className=""> and Mindset</h2>
+              </div>
+              <p className="py-6 md:w-5/6 text-white/80 md:text-base text-sm">
+                Unleash your best self at our modern gym. From top-notch
+                equipment to expert guidance, we&#39;ve got your fitness journey
+                covered. Join us for a transformative experience and achieve
+                your wellness goals. Your path to a healthier you starts here!
+              </p>
+              <div className="lg:mt-6 mb-4">
+                <Link
+                  to={"/products"}
+                  className=" py-4 px-8 rounded-full bg-white "
+                >
+                  Explore Products <MdArrowForwardIos className="inline" />
+                </Link>
+              </div>
+            </div>
+            <div className="absolute -right-20 hidden lg:block">
+              <img
+                className="2xl:h-[36rem] xl:h-[30rem] lg:h-[24rem]"
+                src={heroImage}
+                alt=""
+              />
+            </div>
+            <div className="text-center ms-auto lg:hidden mt-6">
+              <img
+                className="2xl:h-[32rem] xl:h-[30rem] lg:h-[24rem] md:h-[18rem] h-[12rem]"
+                src={heroImage}
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

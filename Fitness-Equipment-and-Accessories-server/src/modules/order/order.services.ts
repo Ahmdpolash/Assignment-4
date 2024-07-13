@@ -4,7 +4,7 @@ import { Product } from "../products/product.model";
 import { Order } from "./order.model";
 
 const createOrderIntoDB = async (order: TOrder) => {
-  let result;
+  // let result;
   const { products } = order;
 
   products.forEach(async (product) => {
@@ -24,11 +24,13 @@ const createOrderIntoDB = async (order: TOrder) => {
       };
     }
 
-    result = await Order.create(order);
-    console.log(result, "result is =<<");
+    // console.log(result, "result is =<<");
     isAvailable.stock -= product.quantity;
     await isAvailable.save();
   });
+
+  const result = await Order.create(order);
+  console.log(result, "result is after order creation");
   return result;
 
   //   return result;
@@ -38,7 +40,6 @@ const getAllOrderIntoDB = async () => {
   const result = await Order.find();
   return result;
 };
-
 
 const getSingleOrderFromDB = async (email: any) => {
   const result = await Order.find({ email: email });

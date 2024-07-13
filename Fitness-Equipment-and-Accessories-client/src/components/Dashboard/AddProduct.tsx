@@ -15,7 +15,7 @@ const AddProduct = () => {
 
     const form = e.target;
     const name = form.productName.value;
-j
+
     const category = cat;
     const stock = Number(form.stock.value);
     const price = Number(form.price.value);
@@ -25,7 +25,8 @@ j
     const data = { name, image, category, stock, price, description };
     console.log(data);
 
-    createProduct(data);
+    const res = createProduct(data);
+    console.log(res, "res");
   };
 
   if (isSuccess) {

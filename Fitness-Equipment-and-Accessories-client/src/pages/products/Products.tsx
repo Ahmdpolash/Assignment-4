@@ -11,12 +11,15 @@ import Header from "@/components/product/Header";
 import MobileSidebar from "@/components/product/MobileSidebar";
 
 import { categories } from "@/constant/index";
-import { TCategory } from "@/types";
+import { TCategory, TProductResponse } from "@/types";
+import { useLoaderData } from "react-router-dom";
 
 const Products = () => {
   const [isOpen, setOpen] = useState(false);
   const [styles, setStyles] = useState("grid");
   const [category, setCategory] = useState("");
+  const [sorting, setSorting] = useState("");
+  console.log(sorting);
 
   const handleOpen = () => {
     setOpen(true);
@@ -30,12 +33,25 @@ const Products = () => {
     scroll(0, 0);
   }, []);
 
-  const { data: apiResponse } = useGetProductsQuery(category);
+  const { data: apiResponse, isLoading } = useGetProductsQuery({
+    category,
+    sorting,
+  });
   const products = apiResponse?.data || [];
 
   // console.log(isError,"error")
 
   // console.log(category);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="w-10 h-10 animate-[spin_1s_linear_infinite]  mx-auto text-center rounded-full border-4 border-r-[#3B9DF8] border-[#3b9df84b]"></div>
+      </div>
+    );
+  }
+
+  const data = useLoaderData() as TProductResponse;
 
   return (
     <div className="px-">
@@ -108,26 +124,24 @@ const Products = () => {
                   <select
                     className="border outline-none py-1 text-center shadow-md bg-transparent text-white rounded-md"
                     name=""
+                    onChange={(e) => setSorting(e.target.value)}
                   >
                     <option className="bg-transparent text-black" value="">
                       Sort By
                     </option>
-                    <option
-                      className="bg-transparent text-black"
-                      value="lowToHigh"
-                    >
+                    <option className="bg-transparent text-black" value="price">
                       Low to High Price
                     </option>
                     <option
                       className="bg-transparent text-black"
-                      value="highToLow"
+                      value="-price"
                     >
                       High to Low Price
                     </option>
-                    <option className="bg-transparent text-black" value="a-z">
+                    <option className="bg-transparent text-black" value="name">
                       Sort by Letter (A-Z)
                     </option>
-                    <option className="bg-transparent text-black" value="z-a">
+                    <option className="bg-transparent text-black" value="-name">
                       Sort by Letter (Z-A)
                     </option>
                   </select>
@@ -172,7 +186,7 @@ const Products = () => {
                     : "grid-cols-1 "
                 } gap-3   `}
               >
-                <ProductCard data={products} />
+                <ProductCard data={products} category={data} />
 
                 {/* {loading && (
                   <>
