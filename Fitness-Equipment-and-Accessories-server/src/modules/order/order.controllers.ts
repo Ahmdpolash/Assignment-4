@@ -4,7 +4,6 @@ import { orderServices } from "./order.services";
 const createOrder: RequestHandler = async (req, res) => {
   try {
     const order = req.body;
-    console.log(order, "aa");
 
     const result = await orderServices.createOrderIntoDB(order);
     res.status(200).json({

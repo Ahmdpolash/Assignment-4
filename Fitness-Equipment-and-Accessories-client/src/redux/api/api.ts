@@ -19,7 +19,13 @@ export const baseApi = createApi({
         url: "/products",
       }),
     }),
+    saveOrder: builder.mutation({
+      query: () => ({
+        method: "POST",
+        url: "/order/create-order",
+      }),
+    }),
   }),
 });
 
-export const { useAddProductsMutation, useGetProductsQuery } = baseApi;
+export const { useAddProductsMutation, useGetProductsQuery , useSaveOrderMutation} = baseApi;

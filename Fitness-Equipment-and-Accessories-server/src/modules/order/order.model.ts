@@ -14,6 +14,7 @@ const OrderSchema = new Schema<TOrder>(
     phone: { type: String, required: true },
     city: { type: String, required: true },
     house: { type: String, required: true },
+    totalPrice: { type: Number, required: true },
     zipCode: { type: Number, required: true },
     products: { type: [productSchema], required: true },
   },

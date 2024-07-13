@@ -102,6 +102,14 @@ const Dashboard = () => {
                   <FiPlus />
                 </span>
                 <Link to="/dashboard/add-product" className="block">
+                  All Product
+                </Link>
+              </li>
+              <li className="flex justify-start text-white items-center gap-2 py-2">
+                <span className="text-xl">
+                  <FiPlus />
+                </span>
+                <Link to="/dashboard/add-product" className="block">
                   Add Product
                 </Link>
               </li>

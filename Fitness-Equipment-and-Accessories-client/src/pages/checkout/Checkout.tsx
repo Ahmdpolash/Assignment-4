@@ -1,9 +1,12 @@
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { useSaveOrderMutation } from "@/redux/api/api";
+import { TAddtoCart } from "@/redux/features/addToCartSlice";
 import { ChangeEvent, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Checkout = () => {
   const navigate = useNavigate();
-
   const { state } = useLocation();
 
   const { products, shipping_fee, price } = state;
@@ -26,9 +29,29 @@ const Checkout = () => {
     navigate("/payment", {
       state: {
         states,
-        cartProduct: products,
+        products: products,
       },
     });
+  };
+
+  const [placeOrder] = useSaveOrderMutation();
+
+  const handlePlaceOrder = () => {
+    const data = {
+      name: states.name,
+      email: states.email,
+      phone: states.phone,
+      city: states.city,
+      zip: states.zip,
+      totalPrice: price,
+
+      products: products.map((product: TAddtoCart) => ({
+        productId: product._id,
+        price: product.price,
+        quantity: product.quantity,
+      })),
+    };
+    placeOrder(data);
   };
 
   return (
@@ -175,13 +198,41 @@ const Checkout = () => {
                     (delivery fee + total price)
                   </span>
 
+                  <div>
+                    <h2 className="text-xl font-medium text-white my-2">
+                      Payment Method
+                    </h2>
+                    <div className="flex flex-col">
+                      <RadioGroup defaultValue="option-one">
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem
+                            className="text-white"
+                            value="option-one"
+                            id="option-one"
+                          />
+                          <Label htmlFor="option-one">Cash On Delivery</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem
+                            disabled
+                            value="option-two"
+                            id="option-two"
+                          />
+                          <Label htmlFor="option-two">
+                            Stripe (not available)
+                          </Label>
+                        </div>
+                      </RadioGroup>
+                    </div>
+                  </div>
+
                   <button
                     className={`bg-[#3C956B] py-2 rounded-md ${
                       !states ? "disabled" : ""
                     }`}
-                    onClick={goPaymentPage}
+                    onClick={handlePlaceOrder}
                   >
-                    Payment
+                    Place Order
                   </button>
                 </div>
               </div>

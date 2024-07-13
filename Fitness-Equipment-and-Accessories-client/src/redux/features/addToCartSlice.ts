@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
 
-type TAddtoCart = {
+export type TAddtoCart = {
   _id: string;
   name: string;
   image: string;

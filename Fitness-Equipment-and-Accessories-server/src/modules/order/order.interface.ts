@@ -8,7 +8,8 @@ export type TOrder = {
   email: string;
   phone: string;
   city: string;
-  house:string;
+  house: string;
+  totalPrice: number;
   zipCode: number;
   products: TProduct[];
 };

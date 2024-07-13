@@ -6,6 +6,7 @@ import { Order } from "./order.model";
 const createOrderIntoDB = async (order: TOrder) => {
   let result;
   const { products } = order;
+
   products.forEach(async (product) => {
     const objId = new mongoose.Types.ObjectId(product?.productId);
     const isAvailable = await Product.findOne({ _id: objId });
@@ -24,7 +25,7 @@ const createOrderIntoDB = async (order: TOrder) => {
     }
 
     result = await Order.create(order);
-    console.log(result,"result is =<<");
+    console.log(result, "result is =<<");
     isAvailable.stock -= product.quantity;
     await isAvailable.save();
   });
@@ -37,6 +38,8 @@ const getAllOrderIntoDB = async () => {
   const result = await Order.find();
   return result;
 };
+
+
 const getSingleOrderFromDB = async (email: any) => {
   const result = await Order.find({ email: email });
   return result;
