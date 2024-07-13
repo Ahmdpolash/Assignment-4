@@ -16,6 +16,7 @@ import { TCategory } from "@/types";
 const Products = () => {
   const [isOpen, setOpen] = useState(false);
   const [styles, setStyles] = useState("grid");
+  const [category, setCategory] = useState<string>('');
 
   const handleOpen = () => {
     setOpen(true);
@@ -29,9 +30,9 @@ const Products = () => {
     scroll(0, 0);
   }, []);
 
-  const { data: apiResponse } = useGetProductsQuery([]);
+  const { data: apiResponse } = useGetProductsQuery(category);
   const products = apiResponse?.data || [];
-  const [category, setCategory] = useState<string>();
+  console.log(products,"products")
 
   console.log(category);
 

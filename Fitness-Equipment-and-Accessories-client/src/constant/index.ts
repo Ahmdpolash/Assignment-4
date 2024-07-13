@@ -159,7 +159,7 @@ export const categories = [
       "https://www.fitnessavenue.ca/cdn/shop/files/AmStaff-TS015B-Adjustable-Bench-BE005_08_b16436ea-90d4-4997-8a82-50ef90c42e6d.jpg?crop=center&height=240&v=1697046015&width=240",
   },
   {
-    name: "Cable Machine",
+    name: "Cable-Machine",
     image:
       "https://www.fitnessavenue.ca/cdn/shop/files/Squat-Power-Rack-Image1_96983d53-6891-4996-9bde-962ba7af7bdc.jpg?crop=center&height=240&v=1703104452&width=240",
   },
@@ -169,17 +169,17 @@ export const categories = [
       "https://www.fitnessavenue.ca/cdn/shop/files/OLY-1500LBS-_-COLLARS---7ft-Olympic-Bar-1500-lbs-w_-Needle-Bearings-_-Collars_5.jpg?crop=center&height=240&v=1697142162&width=240",
   },
   {
-    name: "Squat & Power Racks",
+    name: "Squat-&-Power-Racks",
     image:
       "https://www.fitnessavenue.ca/cdn/shop/files/Squat-Power-Rack-Image1_96983d53-6891-4996-9bde-962ba7af7bdc.jpg?crop=center&height=240&v=1703104452&width=240",
   },
   {
-    name: "Body Weight & Gymnestic",
+    name: "Body-Weight-&-Gymnestic",
     image:
       "https://www.fitnessavenue.ca/cdn/shop/files/WV06B---AmStaff-Fitness-Tactical-Weighted-Vest---Black_17_b7e5ce1a-fc54-4ba8-9743-03168889eb11.jpg?crop=center&height=240&v=1697052594&width=240",
   },
   {
-    name: "Lower Body & Legs",
+    name: "Lower-Body-&-Legs",
     image:
       "https://www.fitnessavenue.ca/cdn/shop/files/TB59B---Leg-Press-Machine-_-Model_05_fa205b80-0d9b-4ce2-989b-f2b5c44deb48.jpg?crop=center&height=240&v=1697046047&width=240",
   },
@@ -209,7 +209,7 @@ export const categories = [
       "https://www.northernfitness.ca/cdn/shop/collections/91df73e111b2f9a1_large_64586c96-752e-439b-9d2f-6983a6a2d196_360x.png?v=1680118778",
   },
   {
-    name: "Exercise Bikes",
+    name: "Exercise-Bikes",
     image:
       "https://www.northernfitness.ca/cdn/shop/collections/KeiserM3i-side_540x.jpg?v=1680109943",
   },
