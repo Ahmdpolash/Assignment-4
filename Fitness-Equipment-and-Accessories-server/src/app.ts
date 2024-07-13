@@ -10,12 +10,15 @@ import { orderRoutes } from "./modules/order/order.routes";
 const app: Application = express();
 
 app.use(express.json());
-app.use(
-  cors({
-    origin: ["http://localhost:5173"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: ["http://localhost:5173"],
+//     credentials: true,
+
+//   })
+// );
+
+app.use(cors());
 
 //routes
 app.use("/api/v1", productRouter);
