@@ -16,7 +16,9 @@ app.use(
       "http://localhost:5173",
       "https://fitness-equipment-and-accessories-client.vercel.app/",
     ],
-    credentials: true,
+    // credentials: true,
+    // methods: ["GET", "POST", "PATCH", "DELETE"],
+    // allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 

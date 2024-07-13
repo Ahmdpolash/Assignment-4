@@ -18,7 +18,9 @@ const AllProducts = () => {
   const [deleteProduct] = useDeleteProductMutation();
 
   const handleDelete = (id: string) => {
-    deleteProduct(id);
+   deleteProduct(id);
+  
+
   };
 
   return (

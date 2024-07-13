@@ -26,13 +26,16 @@ export const baseApi = createApi({
       query: (searchTerm) => {
         const params = new URLSearchParams();
         console.log(searchTerm);
-        if (searchTerm.category || searchTerm.sorting) {
+        if (searchTerm.category || searchTerm.sorting || searchTerm.search) {
           //
           if (searchTerm.sorting) {
             params.append("sort", searchTerm.sorting);
           }
           if (searchTerm.category) {
             params.append("category", searchTerm.category);
+          }
+          if(searchTerm.search){
+            params.append("searchTerm", searchTerm.search);
           }
         }
         return {
@@ -53,9 +56,11 @@ export const baseApi = createApi({
     deleteProduct: builder.mutation({
       query: (id) => ({
         method: "DELETE",
-        url: `/products/:${id}`,
+        url: `/products/${id}`,
       }),
+      
       invalidatesTags: ["product"],
+      
     }),
   }),
 });
