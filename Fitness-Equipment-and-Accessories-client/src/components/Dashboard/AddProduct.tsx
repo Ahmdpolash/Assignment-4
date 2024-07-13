@@ -15,14 +15,14 @@ const AddProduct = () => {
 
     const form = e.target;
     const name = form.productName.value;
-
+j
     const category = cat;
     const stock = Number(form.stock.value);
     const price = Number(form.price.value);
-
+    const image = form.image.value;
     const description = form.description.value;
 
-    const data = { name, category, stock, price, description };
+    const data = { name, image, category, stock, price, description };
     console.log(data);
 
     createProduct(data);

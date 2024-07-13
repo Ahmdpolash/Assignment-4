@@ -34,7 +34,9 @@ const Checkout = () => {
     });
   };
 
-  const [placeOrder] = useSaveOrderMutation();
+  const [placeOrder, { isError }] = useSaveOrderMutation();
+
+  console.log(isError);
 
   const handlePlaceOrder = () => {
     const data = {
@@ -160,7 +162,8 @@ const Checkout = () => {
                           <button
                             onClick={goPaymentPage}
                             type="submit"
-                            className="px-3 py-[6px] rounded-md border hover:border-[#3C956B] hover:text-black hover:bg-white duration-300 hover:shadow-teal-500/20  hover:shadow-lg bg-[#3C956B] border-[#3C956B] text-white"
+                            disabled
+                            className="px-3 disabled hover:cursor-not-allowed py-[6px] rounded-md border hover:border-[#3C956B] hover:text-black hover:bg-white duration-300 hover:shadow-teal-500/20  hover:shadow-lg bg-[#3C956B] border-[#3C956B] text-white"
                           >
                             Proceed to Payment
                           </button>
