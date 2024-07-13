@@ -1,8 +1,8 @@
 import Ratings from "@/components/Ratings/Ratings";
 import Container from "@/components/shared/Container";
-import { addCart } from "@/redux/features/addToCartSlice";
+import { addCart, TAddtoCart } from "@/redux/features/addToCartSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { TProductResponse, TProducts } from "@/types";
+import { TProductResponse } from "@/types";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { FaHeart } from "react-icons/fa";
@@ -19,7 +19,7 @@ const SingleProduct = () => {
   const { carts } = useAppSelector((state) => state.carts);
   console.log(carts);
 
-  const handleAddToCart = (product: TProducts) => {
+  const handleAddToCart = (product: TAddtoCart) => {
     dispatch(
       addCart({
         _id: product._id,

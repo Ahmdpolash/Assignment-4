@@ -24,7 +24,7 @@ const BestSelling = () => {
         name: product.name,
         image: product.image,
         price: product.price,
-        quantity: product.stock,
+        stock: product.stock,
       })
     );
   };

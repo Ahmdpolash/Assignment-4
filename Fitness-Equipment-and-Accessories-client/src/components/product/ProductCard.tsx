@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 
 import { TbCurrencyDollar } from "react-icons/tb";
 import Ratings from "../Ratings/Ratings";
-import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { useAppDispatch } from "@/redux/hook";
 import { addCart } from "@/redux/features/addToCartSlice";
 import { TProducts } from "@/types";
 
 const ProductCard = ({ data }: any) => {
   // console.log(data);
   const dispatch = useAppDispatch();
-  const { carts } = useAppSelector((state) => state.carts);
+  // const { carts } = useAppSelector((state) => state.carts);
   // console.log(carts, "cartsss");
 
   const handleAddToCart = (product: TProducts) => {
